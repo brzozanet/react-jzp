@@ -7,8 +7,6 @@ function App() {
     return (
         <Layout>
             <Folders />
-            <Notes selectedFolder="Listy"></Notes>
-            <Note></Note>
         </Layout>
     );
 }
