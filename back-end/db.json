@@ -1,9 +1,26 @@
 {
     "folders": [
-        { "id": 1, "name": "Notatki" },
-        { "id": 2, "name": "Przemyślenia" }
+        {
+            "id": 1,
+            "name": "Notatki",
+            "notes": []
+        },
+        {
+            "id": 2,
+            "name": "Przemyślenia"
+        },
+        {
+            "id": 3,
+            "name": "Archiwum"
+        },
+        {
+            "name": "Nowy folder",
+            "id": 4
+        }
     ],
-    "archive": { "notes": [] },
+    "archive": {
+        "folderId": 3
+    },
     "notes": [
         {
             "id": 1,
