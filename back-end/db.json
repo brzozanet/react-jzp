@@ -1,0 +1,27 @@
+{
+    "folders": [
+        { "id": 1, "name": "Notatki" },
+        { "id": 2, "name": "Przemyślenia" }
+    ],
+    "archive": { "notes": [] },
+    "notes": [
+        {
+            "id": 1,
+            "folderId": 1,
+            "title": "Testowa notatka",
+            "body": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, harum iste earum corrupti amet facere voluptatem dolores aperiam, nobis pariatur ducimus modi cumque expedita ullam, fugit reprehenderit natus in qui?"
+        },
+        {
+            "id": 2,
+            "folderId": 1,
+            "title": "Lista zakupów",
+            "body": "Jabłka, gruszki, ziemniaki, woda mineralna, pasta do zębów."
+        },
+        {
+            "id": 3,
+            "folderId": 1,
+            "title": "Na wakacje",
+            "body": "Kupić ubezpieczenie, zarezerować loty, spakować walizkę, zadzwonić do hotelu."
+        }
+    ]
+}

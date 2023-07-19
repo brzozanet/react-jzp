@@ -19,11 +19,11 @@ const Notes = ({ selectedFolder }) => {
         },
         {
             title: "Lista zakupów",
-            body: "Jabłka, gruszki, ziemniaki, woda mineralna, pasta do zębów ",
+            body: "Jabłka, gruszki, ziemniaki, woda mineralna, pasta do zębów.",
         },
         {
             title: "Na wakacje",
-            body: "Kupić ubezpieczenie, zarezerować loty, spakować walizkę, zadzwonić do hotelu",
+            body: "Kupić ubezpieczenie, zarezerować loty, spakować walizkę, zadzwonić do hotelu.",
         },
     ]);
     return (
