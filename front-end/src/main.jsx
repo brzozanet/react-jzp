@@ -1,15 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import App from "./App";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import NotesList from "./components/notes-list/NotesList";
 
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <div>Hello world!</div>,
-    },
-    {
-        path: "dzien-dobry",
-        element: <i>Dzień dobry</i>,
+        element: <App />,
+        children: [
+            {
+                path: "/notes/:folderId",
+                element: <NotesList />,
+            },
+        ],
     },
 ]);
 

@@ -16,6 +16,7 @@ const StyledInput = styled.input`
 `;
 
 const UserCreatedFolders = styled.div`
+    // styled Li
     flex: 1;
 `;
 

@@ -1,7 +1,11 @@
-import { StyledFolder } from "./style";
+import styles from "./Folder.module.css";
 
 const Folder = ({ children, active }) => {
-    return <StyledFolder active={active}>{children}</StyledFolder>;
+    return (
+        <div className={[styles.folder, active ? styles.active : ""].join(" ")}>
+            {children}
+        </div>
+    );
 };
 
 export default Folder;
