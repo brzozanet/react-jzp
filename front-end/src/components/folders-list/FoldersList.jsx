@@ -1,9 +1,8 @@
-import { useState } from "react";
 import Folder from "../folder/Folder";
 import AddNewButton from "../add-new-button/AddNewButton";
 import FolderIcon from "../../assets/folder.svg";
 import RemoveIcon from "../../assets/remove.svg";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLoaderData } from "react-router-dom";
 
 import {
     FolderImage,
@@ -15,16 +14,7 @@ import { Title } from "../title/Title";
 import TopBar from "../top-bar/TopBar";
 
 const FoldersList = () => {
-    const [foldersList] = useState([
-        {
-            name: "Listy",
-            id: 1,
-        },
-        {
-            name: "Przemyślenia",
-            id: 2,
-        },
-    ]);
+    const foldersList = useLoaderData();
 
     return (
         <StyledFolders>
@@ -36,9 +26,9 @@ const FoldersList = () => {
             <Title>Foldery</Title>
             <UserCreatedFolders>
                 {foldersList.map((folder, idx) => (
-                    <NavLink to={"/notes/" + folder.id}>
+                    <NavLink to={"/notes/" + folder.id} key={folder.id}>
                         {({ isActive }) => (
-                            <Folder active={isActive} key={folder.id}>
+                            <Folder active={isActive}>
                                 <FolderImage src={FolderIcon} />
                                 {folder.name} {isActive}
                             </Folder>

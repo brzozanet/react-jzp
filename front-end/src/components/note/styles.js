@@ -3,8 +3,8 @@ import { styled } from "styled-components";
 const StyledNote = styled.div`
     padding: 20px;
     display: flex;
+    flex: 1;
     flex-direction: column;
-    width: 100%;
     box-sizing: border-box;
 `;
 
@@ -18,8 +18,8 @@ const StyledNoteTitle = styled.input`
 
 const StyledNoteBody = styled.textarea`
     display: block;
-    flex: 1;
     border: 0;
+    flex: 1;
     background-color: transparent;
     font-family: inherit;
 `;
