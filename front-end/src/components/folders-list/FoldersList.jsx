@@ -1,7 +1,7 @@
 import Folder from "../folder/Folder";
 import AddNewButton from "../add-new-button/AddNewButton";
 import FolderIcon from "../../assets/folder.svg";
-import { NavLink, useLoaderData, Form } from "react-router-dom";
+import { NavLink, useLoaderData, Form, redirect } from "react-router-dom";
 
 import {
     FolderImage,
@@ -24,7 +24,9 @@ export async function createFolder(args) {
         body: JSON.stringify({
             name: folderName,
         }),
-    });
+    })
+        .then((result) => result.json())
+        .then((folder) => redirect(`/notes/${folder.id}`));
 }
 
 const FoldersList = () => {

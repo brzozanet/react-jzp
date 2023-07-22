@@ -5,6 +5,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import NotesList, { createNewNote } from "./components/notes-list/NotesList";
 import Note, { updateNote } from "./components/note/Note";
 import { createFolder } from "./components/folders-list/FoldersList";
+import { deleteNote } from "./components/note/Note";
 
 const router = createBrowserRouter([
     {
@@ -36,6 +37,12 @@ const router = createBrowserRouter([
                         action: updateNote,
                         path: "note/:noteId",
                         element: <Note />,
+                        children: [
+                            {
+                                path: "delete",
+                                action: deleteNote,
+                            },
+                        ],
                     },
                 ],
             },

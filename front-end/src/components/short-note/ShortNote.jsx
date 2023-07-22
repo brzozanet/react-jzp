@@ -1,5 +1,5 @@
 import styles from "./ShortNote.module.css";
-import RemoveIcon from "../../assets/remove.svg";
+import { Link } from "react-router-dom";
 
 const ShortNote = ({ note, active }) => (
     <div
@@ -7,10 +7,7 @@ const ShortNote = ({ note, active }) => (
             " "
         )}
     >
-        <div className={styles.title}>
-            {note.title}
-            <img className={styles.image} src={RemoveIcon} />
-        </div>
+        <div className={styles.title}>{note.title}</div>
         <div className={styles.body}>{note.body}</div>
     </div>
 );

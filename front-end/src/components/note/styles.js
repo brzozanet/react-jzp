@@ -20,6 +20,7 @@ const StyledNoteBody = styled.textarea`
     display: block;
     border: 0;
     flex: 1;
+
     background-color: transparent;
     font-family: inherit;
 `;

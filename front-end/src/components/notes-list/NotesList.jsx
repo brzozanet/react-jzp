@@ -12,6 +12,7 @@ import {
 } from "react-router-dom";
 
 export function createNewNote({ params }) {
+    debugger;
     return fetch("http://localhost:3000/notes", {
         method: "POST",
         headers: {
@@ -22,7 +23,9 @@ export function createNewNote({ params }) {
             body: "Tutaj wpisz treść swojej notatki",
             folderId: parseInt(params.folderId, 10),
         }),
-    });
+    })
+        .then((result) => result.json())
+        .then((note) => redirect(`/notes/${note.folderId}/note/${note.id}`));
 }
 
 const NotesList = () => {

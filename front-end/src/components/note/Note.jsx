@@ -1,5 +1,15 @@
-import { useLoaderData, Form, useSubmit } from "react-router-dom";
+import RemoveIcon from "../../assets/remove.svg";
+
+import { useLoaderData, Form, useSubmit, redirect } from "react-router-dom";
 import { StyledNoteBody, StyledNoteTitle, StyledNote } from "./styles";
+import TopBar from "../top-bar/TopBar";
+import styles from "./Note.module.css";
+
+export async function deleteNote({ params }) {
+    return fetch(`http://localhost:3000/notes/${params["noteId"]}`, {
+        method: "DELETE",
+    }).then(() => redirect(`/notes/${params["folderId"]}`));
+}
 
 export async function updateNote(args) {
     const data = await args.request.formData();
@@ -27,17 +37,27 @@ const Note = () => {
     const submit = useSubmit();
 
     return (
-        <Form
-            method="PATCH"
-            onChange={(event) => {
-                submit(event.currentTarget);
-            }}
-        >
-            <StyledNote>
-                <StyledNoteTitle name="title" defaultValue={note.title} />
-                <StyledNoteBody name="body" defaultValue={note.body} />
-            </StyledNote>
-        </Form>
+        <div className={styles.container}>
+            <TopBar>
+                <Form method="DELETE" action="delete">
+                    <button className={styles.button}>
+                        <img className={styles.image} src={RemoveIcon} />
+                    </button>
+                </Form>
+            </TopBar>
+
+            <Form
+                method="PATCH"
+                onChange={(event) => {
+                    submit(event.currentTarget);
+                }}
+            >
+                <StyledNote>
+                    <StyledNoteTitle name="title" defaultValue={note.title} />
+                    <StyledNoteBody name="body" defaultValue={note.body} />
+                </StyledNote>
+            </Form>
+        </div>
     );
 };
 
