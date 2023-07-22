@@ -1,8 +1,7 @@
 import Folder from "../folder/Folder";
 import AddNewButton from "../add-new-button/AddNewButton";
 import FolderIcon from "../../assets/folder.svg";
-import RemoveIcon from "../../assets/remove.svg";
-import { NavLink, useLoaderData } from "react-router-dom";
+import { NavLink, useLoaderData, Form } from "react-router-dom";
 
 import {
     FolderImage,
@@ -13,14 +12,35 @@ import {
 import { Title } from "../title/Title";
 import TopBar from "../top-bar/TopBar";
 
+export async function createFolder(args) {
+    const data = await args.request.formData();
+    const folderName = data.get("folder-name");
+
+    return fetch("http://localhost:3000/folders", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            name: folderName,
+        }),
+    });
+}
+
 const FoldersList = () => {
     const foldersList = useLoaderData();
 
     return (
         <StyledFolders>
             <TopBar>
-                <StyledInput type="text" placeholder="Nazwa folderu" />
-                <AddNewButton>+</AddNewButton>
+                <Form method="POST">
+                    <StyledInput
+                        type="text"
+                        name="folder-name"
+                        placeholder="Nazwa folderu"
+                    />
+                    <AddNewButton>+</AddNewButton>
+                </Form>
             </TopBar>
 
             <Title>Foldery</Title>
@@ -36,11 +56,6 @@ const FoldersList = () => {
                     </NavLink>
                 ))}
             </UserCreatedFolders>
-
-            <Folder>
-                <FolderImage src={RemoveIcon} />
-                Archiwum
-            </Folder>
         </StyledFolders>
     );
 };
