@@ -6,6 +6,7 @@ import NotesList, { createNewNote } from "./components/notes-list/NotesList";
 import Note, { updateNote } from "./components/note/Note";
 import { createFolder } from "./components/folders-list/FoldersList";
 import { deleteNote } from "./components/note/Note";
+import NotFound from "./components/not-found/NotFound";
 
 const router = createBrowserRouter([
     {
@@ -14,6 +15,7 @@ const router = createBrowserRouter([
         loader: () => {
             return fetch("http://localhost:3000/folders");
         },
+        errorElement: <NotFound />,
         element: <App />,
         children: [
             {
@@ -31,12 +33,13 @@ const router = createBrowserRouter([
                         loader: ({ params }) => {
                             const noteId = params.noteId;
                             return fetch(
-                                `http://localhost:3000/notes?folderId=${params.folderId}&id=${noteId}`
+                                `http://localhost:3000/notes/${noteId}`
                             );
                         },
                         action: updateNote,
                         path: "note/:noteId",
                         element: <Note />,
+                        errorElement: <NotFound />,
                         children: [
                             {
                                 path: "delete",

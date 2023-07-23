@@ -16,8 +16,6 @@ export async function updateNote(args) {
     const title = data.get("title");
     const body = data.get("body");
 
-    debugger;
-
     const noteId = args.params.noteId;
 
     return fetch(`http://localhost:3000/notes/${noteId}`, {
@@ -33,7 +31,7 @@ export async function updateNote(args) {
 }
 
 const Note = () => {
-    const [note] = useLoaderData();
+    const note = useLoaderData();
     const submit = useSubmit();
 
     return (
