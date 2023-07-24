@@ -44,6 +44,7 @@ const FoldersList = () => {
                     <Folder key={idx}>{folder.name}</Folder>
                 ))}
             </UserCreatedFolders>
+            {/* <Folder icon="archive">Archiwum</Folder> */}
         </Folders>
     );
 };
