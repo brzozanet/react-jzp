@@ -1,5 +1,4 @@
 import styles from "./ShortNote.module.css";
-import { Link } from "react-router-dom";
 
 const ShortNote = ({ note, active }) => (
     <div
@@ -12,4 +11,4 @@ const ShortNote = ({ note, active }) => (
     </div>
 );
 
-export default ShortNote;
+export { ShortNote };

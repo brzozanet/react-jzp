@@ -1,64 +1,50 @@
-import Folder from "../folder/Folder";
-import AddNewButton from "../add-new-button/AddNewButton";
-import FolderIcon from "../../assets/folder.svg";
-import { NavLink, useLoaderData, Form, redirect } from "react-router-dom";
+import styles from "./FoldersList.module.css";
 
-import {
-    FolderImage,
-    StyledFolders,
-    StyledInput,
-    UserCreatedFolders,
-} from "./style";
+import { useState } from "react";
+import { Folder } from "../folder/Folder";
 import { Title } from "../title/Title";
-import TopBar from "../top-bar/TopBar";
+import { TopBar } from "../top-bar/TopBar";
+import { AddNewButton } from "../add-new-button/AddNewButton";
 
-export async function createFolder(args) {
-    const data = await args.request.formData();
-    const folderName = data.get("folder-name");
-
-    return fetch("http://localhost:3000/folders", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            name: folderName,
-        }),
-    })
-        .then((result) => result.json())
-        .then((folder) => redirect(`/notes/${folder.id}`));
-}
+const Folders = ({ children }) => (
+    <div className={styles["folders-column"]}>{children}</div>
+);
+const UserCreatedFolders = ({ children }) => (
+    <div role="list" className={styles["folders-list"]}>
+        {children}
+    </div>
+);
 
 const FoldersList = () => {
-    const foldersList = useLoaderData();
+    const [folders] = useState([
+        {
+            name: "Listy",
+            id: 1,
+        },
+        {
+            name: "Przemyślenia",
+            id: 2,
+        },
+    ]);
 
     return (
-        <StyledFolders>
+        <Folders>
             <TopBar>
-                <Form method="POST">
-                    <StyledInput
-                        type="text"
-                        name="folder-name"
-                        placeholder="Nazwa folderu"
-                    />
-                    <AddNewButton>+</AddNewButton>
-                </Form>
+                <input
+                    className={styles["new-folder-input"]}
+                    type="text"
+                    placeholder="Nazwa folderu"
+                />
+                <AddNewButton type="submit">+</AddNewButton>
             </TopBar>
 
             <Title>Foldery</Title>
             <UserCreatedFolders>
-                {foldersList.map((folder, idx) => (
-                    <NavLink to={"/notes/" + folder.id} key={folder.id}>
-                        {({ isActive }) => (
-                            <Folder active={isActive}>
-                                <FolderImage src={FolderIcon} />
-                                {folder.name} {isActive}
-                            </Folder>
-                        )}
-                    </NavLink>
+                {folders.map((folder, idx) => (
+                    <Folder key={idx}>{folder.name}</Folder>
                 ))}
             </UserCreatedFolders>
-        </StyledFolders>
+        </Folders>
     );
 };
 

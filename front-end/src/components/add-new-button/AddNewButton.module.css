@@ -1,11 +1,4 @@
-import { styled } from "styled-components";
-
-const StyledButton = styled.button`
-    &:hover {
-        color: black;
-        border-color: black;
-    }
-
+.add-new-button {
     border: 1px solid grey;
     color: grey;
     cursor: pointer;
@@ -16,6 +9,9 @@ const StyledButton = styled.button`
     height: 27px;
     font-size: 20px;
     transform: scale(0.7);
-`;
+}
 
-export { StyledButton };
+.add-new-button:hover {
+    color: black;
+    border-color: black;
+}

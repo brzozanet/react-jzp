@@ -1,5 +1,7 @@
-import { StyledDiv } from "./style";
+import styles from "./TopBar.module.css";
 
-const TopBar = StyledDiv;
+const TopBar = ({ children }) => (
+    <div className={styles["top-bar"]}>{children}</div>
+);
 
-export default TopBar;
+export { TopBar };
