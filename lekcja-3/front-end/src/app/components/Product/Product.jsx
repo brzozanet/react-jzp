@@ -1,6 +1,10 @@
+"use client";
+import { useContext } from "react";
 import styles from "./Product.module.css";
+import { CurrencyContext } from "../../contexts/CurrencyContext";
 
-function Product({ product, currency }) {
+function Product({ product }) {
+    const [currency] = useContext(CurrencyContext);
     return (
         <>
             <div className={styles.productCard}>

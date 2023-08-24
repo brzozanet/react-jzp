@@ -1,11 +1,11 @@
-import { TopBar } from "../../components/TopBar/TopBar";
-import { MainMenu } from "../../components/MainMenu/MainMenu";
-import { Logo } from "../../components/Logo/Logo";
-import { IconMenu } from "../../components/IconMenu/IconMenu";
-import { CategoriesMenu } from "../../components/CategoriesMenu/CategoriesMenu";
-import { Footer } from "../../components/Footer/Footer";
-import { MainContent } from "../../components/MainContent/MainContent";
-import { CurrencySelector } from "../../components/CurrencySelector/CurrencySelector";
+import { TopBar } from "../TopBar/TopBar";
+import { MainMenu } from "../MainMenu/MainMenu";
+import { Logo } from "../Logo/Logo";
+import { IconMenu } from "../IconMenu/IconMenu";
+import { CategoriesMenu } from "../CategoriesMenu/CategoriesMenu";
+import { Footer } from "../Footer/Footer";
+import { MainContent } from "../MainContent/MainContent";
+import { CurrencySelector } from "../CurrencySelector/CurrencySelector";
 
 function Layout({ children }) {
     return (

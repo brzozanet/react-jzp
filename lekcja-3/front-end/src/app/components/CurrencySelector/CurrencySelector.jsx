@@ -1,14 +1,17 @@
 "use client";
 
 import styles from "./CurrencySelector.module.css";
+import { CurrencyContext } from "../../contexts/CurrencyContext";
+import { useContext } from "react";
 
-function CurrencySelector({ currency }) {
+function CurrencySelector() {
+    const [currency, setCurrency] = useContext(CurrencyContext);
     return (
         <select
             className={styles.currencySelector}
             defaultValue={currency}
             onChange={(e) => {
-                window.location.href = `/${e.currentTarget.value}/mezczyzna`;
+                setCurrency(e.target.value);
             }}
         >
             <option value="PLN">PLN</option>

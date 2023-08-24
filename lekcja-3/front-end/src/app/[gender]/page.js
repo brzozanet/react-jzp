@@ -1,4 +1,4 @@
-import { MainPage } from "../../views/MainPage/MainPage";
+import { MainPage } from "../views/MainPage/MainPage";
 
 export default function Home({ params }) {
     return <MainPage gender={params.gender} currency={params.currency} />;
