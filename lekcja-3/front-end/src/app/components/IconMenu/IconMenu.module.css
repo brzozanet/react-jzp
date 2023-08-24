@@ -1,0 +1,32 @@
+.icon {
+    width: 24px;
+    height: 24px;
+}
+
+.menu {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.cart {
+    position: relative;
+}
+
+.activeItem {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25px;
+    height: 25px;
+    background-color: var(--color-yellow);
+    color: var(--color-default);
+    border-radius: 50%;
+    font-weight: 600;
+    font-size: 0.75rem;
+    transform: scale(0.75);
+    right: -10px;
+    bottom: -10px;
+}

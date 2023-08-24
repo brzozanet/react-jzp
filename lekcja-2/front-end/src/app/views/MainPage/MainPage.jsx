@@ -15,10 +15,10 @@ async function MainPage({ gender = "women" }) {
     ).then((res) => res.json());
 
     return (
-        <Layout>
+        <>
             <Hero heroImage={data.heroImageUrl} />
             <Bestsellers products={data.bestsellers} />
-        </Layout>
+        </>
     );
 }
 
