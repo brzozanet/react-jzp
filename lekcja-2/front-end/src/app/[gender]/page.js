@@ -1,8 +1,6 @@
 import { MainPage } from "../views/MainPage/MainPage";
 
 export default function Home({ params }) {
-    console.log(params.gender);
-    const gender = params.gender || "kobieta";
     return <MainPage gender={params.gender} />;
 }
 

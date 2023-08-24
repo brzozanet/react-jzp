@@ -8,7 +8,7 @@ function CategoriesMenu() {
                 <ul className={styles.menuContent}>
                     {CATEGORIES.map(({ path, categoryName }) => (
                         <li key={path}>
-                            <a className={styles.menuItem} href={`/${path}`}>
+                            <a className={styles.menuItem} href={`${path}`}>
                                 {categoryName}
                             </a>
                         </li>

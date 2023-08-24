@@ -8,14 +8,14 @@ import { Footer } from "../components/Footer/Footer";
 import { MainContent } from "../components/MainContent/MainContent";
 import { CurrencySelector } from "../components/CurrencySelector/CurrencySelector";
 
-export default function RootLayout({ children, params }) {
+export default function RootLayout({ children }) {
     return (
         <>
             <MainContent>
                 <TopBar>
                     <MainMenu />
                     <Logo />
-                    <CurrencySelector currency={params.currency} />
+                    <CurrencySelector />
                     <IconMenu />
                 </TopBar>
                 <CategoriesMenu />

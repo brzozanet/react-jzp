@@ -6,7 +6,7 @@ function MainMenu() {
         <ul className={styles.menu}>
             {GENDERS.map(({ path, categoryName }) => (
                 <li key={path}>
-                    <a className={styles.menuItem} href={`/${path}`}>
+                    <a className={styles.menuItem} href={`${path}`}>
                         {categoryName}
                     </a>
                 </li>

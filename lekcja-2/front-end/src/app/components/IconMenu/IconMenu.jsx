@@ -11,7 +11,7 @@ function IconMenu() {
     return (
         <ul className={styles.menu}>
             <li>
-                <a href="/ulubione">
+                <a href="ulubione">
                     <img className={styles.icon} src={HeartIcon.src} />
                 </a>
             </li>
