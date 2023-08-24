@@ -1,5 +1,4 @@
 import { FavouritesList } from "../../components/FavouritesList/FavouritesList";
-import { Layout } from "../../components/Layout/Layout";
 import SweaterImg from "../../assets/products/sweater.jpg";
 
 function Favourites() {
@@ -9,34 +8,32 @@ function Favourites() {
             name: "Biały Sweter",
             pricePLN: 199,
             priceUSD: 49,
-            images: [SweaterImg],
+            images: [SweaterImg.src],
         },
         {
             id: 3,
             name: "Biały Sweter",
             pricePLN: 199,
             priceUSD: 49,
-            images: [SweaterImg],
+            images: [SweaterImg.src],
         },
 
         {
             name: "Biały Sweter",
             pricePLN: 199,
             priceUSD: 49,
-            images: [SweaterImg],
+            images: [SweaterImg.src],
         },
 
         {
             name: "Biały Sweter",
             pricePLN: 199,
             priceUSD: 49,
-            images: [SweaterImg],
+            images: [SweaterImg.src],
         },
     ];
     return (
-        <Layout>
-            <FavouritesList products={products} />
-        </Layout>
+        <FavouritesList products={products} />
     );
 }
 

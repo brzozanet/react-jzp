@@ -21,12 +21,12 @@ function FavouriteProduct({ product }) {
 
                 <div className={styles.buttons}>
                     <button className={styles.button}>
-                        <img src={Remove}></img>
+                        <img src={Remove.src}></img>
                         <span>Usuń</span>
                     </button>
 
                     <button className={styles.button}>
-                        <img src={Bag}></img>
+                        <img src={Bag.src}></img>
                         <span>Dodaj do koszyka</span>
                     </button>
                 </div>

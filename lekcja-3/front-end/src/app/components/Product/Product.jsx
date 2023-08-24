@@ -1,12 +1,6 @@
-"use client";
-import { CurrencyContext } from "@/app/contexts/CurrencyContext";
 import styles from "./Product.module.css";
 
-import { useContext } from "react";
-
-function Product({ product }) {
-    const [selectedCurrency] = useContext(CurrencyContext);
-
+function Product({ product, currency }) {
     return (
         <>
             <div className={styles.productCard}>
@@ -19,10 +13,10 @@ function Product({ product }) {
                 <div>
                     <p className={styles.name}>{product.name}</p>
                     <p className={styles.productPrice}>
-                        {selectedCurrency === "PLN"
+                        {currency === "PLN"
                             ? product.pricePLN
                             : product.priceUSD}{" "}
-                        {selectedCurrency === "PLN" ? "zł" : "$"}
+                        {currency === "PLN" ? "zł" : "$"}
                     </p>
                 </div>
             </div>

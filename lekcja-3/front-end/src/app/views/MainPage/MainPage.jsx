@@ -1,9 +1,7 @@
 import { Hero } from "../../components/Hero/Hero";
 import { Bestsellers } from "../../components/Bestsellers/Bestsellers";
 
-import { Layout } from "../../components/Layout/Layout";
-
-async function MainPage({ gender = "women" }) {
+async function MainPage({ gender = "women", currency = "currency" }) {
     const PATH_TO_ENDPOINT_MAPPING = {
         kobieta: "women",
         mezczyzna: "men",
@@ -17,7 +15,7 @@ async function MainPage({ gender = "women" }) {
     return (
         <>
             <Hero heroImage={data.heroImageUrl} />
-            <Bestsellers products={data.bestsellers} />
+            <Bestsellers products={data.bestsellers} currency={currency} />
         </>
     );
 }
