@@ -35,7 +35,7 @@ export function Stocks() {
     return (
         <section className={styles.section}>
             {error ? (
-                error.message
+                <span className={styles.error}>{error.message}</span>
             ) : (
                 <ul className={styles.list}>
                     {stocks.map((stock) => (
