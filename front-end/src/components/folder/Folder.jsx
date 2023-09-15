@@ -2,7 +2,7 @@ import styles from "./Folder.module.css";
 import FolderIcon from "../../assets/folder.svg";
 import ArchiveIcon from "../../assets/remove.svg";
 
-const Folder = ({ children, active, icon }) => {
+export function Folder({ children, active, icon }) {
     return (
         <div
             className={[styles.folder, active ? styles.active : ""].join(" ")}
@@ -12,6 +12,4 @@ const Folder = ({ children, active, icon }) => {
             {children}
         </div>
     );
-};
-
-export { Folder };
+}

@@ -1,5 +1,5 @@
 import style from "./Title.module.css";
 
-const Title = ({ children }) => <p className={style.title}>{children}</p>;
-
-export { Title };
+export function Title({ children }) {
+    return <p className={style.title}>{children}</p>;
+}

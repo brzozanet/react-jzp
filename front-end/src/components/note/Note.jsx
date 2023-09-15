@@ -6,7 +6,7 @@ const NoteEditor = ({ children }) => (
     <div className={styles["note-editor"]}>{children}</div>
 );
 
-const Note = () => {
+export function Note() {
     return (
         <div className={styles.container}>
             <TopBar>
@@ -21,6 +21,4 @@ const Note = () => {
             </NoteEditor>
         </div>
     );
-};
-
-export { Note };
+}

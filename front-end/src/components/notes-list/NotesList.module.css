@@ -10,3 +10,9 @@
     width: 20%;
     height: 100%;
 }
+
+.container :global(form) {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}

@@ -16,7 +16,7 @@ const Notes = ({ children }) => (
     </div>
 );
 
-const NotesList = () => {
+export function NotesList() {
     const [notes] = useState([
         {
             id: 5,
@@ -76,6 +76,4 @@ const NotesList = () => {
             <Note />
         </NotesContainer>
     );
-};
-
-export default NotesList;
+}

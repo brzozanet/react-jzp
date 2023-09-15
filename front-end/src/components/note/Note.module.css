@@ -21,6 +21,7 @@
     flex: 1;
     flex-direction: column;
     box-sizing: border-box;
+    width: 100%;
 }
 
 .note-editor input {
@@ -38,4 +39,11 @@
 
     background-color: transparent;
     font-family: inherit;
+}
+
+.container :global(form) {
+    display: flex;
+    flex: 1;
+    align-items: flex-start;
+    flex-direction: column;
 }

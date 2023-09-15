@@ -15,7 +15,7 @@ const UserCreatedFolders = ({ children }) => (
     </div>
 );
 
-const FoldersList = () => {
+export function FoldersList() {
     const [folders] = useState([
         {
             name: "Listy",
@@ -47,6 +47,6 @@ const FoldersList = () => {
             {/* <Folder icon="archive">Archiwum</Folder> */}
         </Folders>
     );
-};
+}
 
 export default FoldersList;
