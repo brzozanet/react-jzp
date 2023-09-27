@@ -37,14 +37,14 @@ Elementy zwracane i zapisywane do serwera mają następujące pola:
 ### Opis endpointów
 
 | Ścieżka             | Metoda   | Jak działa?                                                                                                                    |
-| ------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| ------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------              |
 | /folders            | `GET`    | Pobiera wszystkie foldery                                                                                                      |
 | /folders            | `POST`   | Dodaje nowy folder. Wymagania przesłania body z danymi nowego folderu, np: `{name: 'Nowy folder'}`                             |
-| /notes?folderId=XYZ | `GET`    | Pobiera notatki z folderu o ID `XYZ`                                                                                           |
-| /notes              | `POST`   | Dodaje nową notatkę. Wymagania przesłania body z danymi nowej notatki, np: `{title: 'Nowa notatka', body: 'Treść notatki'}`    |
+| /notes?folderId=XYZ | `GET`    | Pobiera notatki z folderu o ID `XYZ`                                                                                                        |
+| /notes              | `POST`   | Dodaje nową notatkę. Wymagania przesłania body z danymi nowej notatki, np: `{title: 'Nowa notatka', body: 'Treść notatki', folderId: 1}`    |
 | /notes/XYZ          | `GET`    | Pobiera notatkę o ID XYZ.                                                                                                      |
-| /notes/XYZ          | `PATCH`  | Aktualizuje notatkę o ID `XYZ`. Wymagania przesłania body nowymi danymi notaki np: `{title: 'Nowy tytuł', body: 'Nowa treść'}` |
-| /notes/XYZ          | `DELETE` | Kasuje notatkę o ID `XYZ`                                                                                                      |
+| /notes/XYZ          | `PATCH`  | Aktualizuje notatkę o ID `XYZ`. Wymagania przesłania body nowymi danymi notatki np: `{title: 'Nowy tytuł', body: 'Nowa treść'}` |
+| /notes/XYZ          | `DELETE` | Kasuje notatkę o ID `XYZ`                                                                                                      |**
 
 ### Przykłady użycia
 
