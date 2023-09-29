@@ -7,3 +7,17 @@ const PARAM_TO_WORD = {
 export default function DynamicRoute({ params }) {
     return <h2>{PARAM_TO_WORD[params.gender]}</h2>;
 }
+
+export async function generateStaticParams() {
+    return [
+        {
+            gender: "kobieta",
+        },
+        {
+            gender: "mezczyzna",
+        },
+        {
+            gender: "dziecko",
+        },
+    ];
+}
