@@ -8,7 +8,7 @@ export default function DynamicRoute({ params }) {
     return <h2>{PARAM_TO_WORD[params.gender]}</h2>;
 }
 
-export function generateStaticParams() {
+export async function generateStaticParams() {
     return [
         {
             gender: "kobieta",
