@@ -1,4 +1,3 @@
-import { Modal } from "../Modal/Modal";
 import "./Section.css";
 
 export function Section() {
