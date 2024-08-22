@@ -1,4 +1,8 @@
 function App() {
+  const handleClick = () => {
+    alert("Button click!");
+  };
+
   return (
     <>
       <h1>Wataha, sezon 1</h1>
@@ -10,7 +14,7 @@ function App() {
         doloremque id perspiciatis tempore, natus totam reprehenderit maxime
         blanditiis aut quaerat eveniet.
       </p>
-      <button>Pokaż spoiler</button>
+      <button onClick={handleClick}>Pokaż spoiler</button>
       <p>
         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quae, culpa?
         Ex consectetur vero cupiditate! Corporis non, necessitatibus velit alias
