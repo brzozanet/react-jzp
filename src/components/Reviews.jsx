@@ -8,15 +8,21 @@ export const Reviews = () => {
     const author = event.target[0].value;
     const text = event.target[1].value;
 
-    // FIXME: not working
     setReview({ author, text });
-    console.log(review);
   };
 
+  console.log(review);
   return (
     <>
       <h2>Recenzje</h2>
-
+      {review ? (
+        <article>
+          <p>{review.author}</p>
+          <p>{review.text}</p>
+        </article>
+      ) : (
+        ""
+      )}
       <h2>Dodaj recenzję</h2>
       <form onSubmit={handleReviewsForm}>
         <div>
