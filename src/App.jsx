@@ -3,6 +3,7 @@ import { useState } from "react";
 function App() {
   const [isSpoilerShown, setIsSpoilerShown] = useState(false);
   const [isWarningShown, setIsWarningShown] = useState(true);
+  const [numberOfLikes, setNumberOfLikes] = useState(null);
 
   const handleSpoilerShowClick = () => {
     setIsSpoilerShown(true);
@@ -13,10 +14,21 @@ function App() {
     setIsWarningShown(false);
   };
 
+  const handleLikeButtonClick = () => {
+    setNumberOfLikes((prevNumber) => prevNumber + 1);
+  };
+
+  const handleLoveButtonClick = () => {
+    setNumberOfLikes((prevNumber) => prevNumber + 3);
+  };
+
   return (
     <>
       <h1>Wataha, sezon 1</h1>
       <h2>Rok produkcji: 2015</h2>
+      {numberOfLikes && <h2>Liczba polubień: {numberOfLikes}</h2>}
+      <button onClick={handleLikeButtonClick}>Lubię to!</button>{" "}
+      <button onClick={handleLoveButtonClick}>Kocham to!</button>
       <h2>Fabuła</h2>
       {isWarningShown && (
         <p>
