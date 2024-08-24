@@ -2,23 +2,35 @@ import { useState } from "react";
 
 export const Reviews = () => {
   const [review, setReview] = useState(null);
+  const [inputValue, setInputValue] = useState("");
+  const [textareaValue, setTextareaValue] = useState("");
+
+  const handleInput = (event) => {
+    setInputValue(event.target.value);
+  };
+
+  const handleTextaarea = (event) => {
+    setTextareaValue(event.target.value);
+  };
 
   const handleReviewsForm = (event) => {
     event.preventDefault();
-    const author = event.target[0].value;
-    const text = event.target[1].value;
+    const author = inputValue;
+    const text = textareaValue;
 
     setReview({ author, text });
   };
 
-  console.log(review);
   return (
     <>
       <h2>Recenzje</h2>
       {review ? (
         <article>
-          <p>{review.author}</p>
-          <p>{review.text}</p>
+          <p>
+            <strong>{review.author}:</strong>
+            <br />
+            {review.text}
+          </p>
         </article>
       ) : (
         ""
@@ -29,15 +41,20 @@ export const Reviews = () => {
           <div>
             <label htmlFor="author">Autor:</label>
           </div>
-          <input type="text" id="author" name="author" />
+          <input type="text" id="author" name="author" onChange={handleInput} />
         </div>
         <div>
           <div>
             <label htmlFor="text">Tekst:</label>
           </div>
-          <textarea name="text" id="text"></textarea>
+          <textarea name="text" id="text" onChange={handleTextaarea}></textarea>
         </div>
-        <button>Dodaj</button>
+        <button
+          type="submit"
+          disabled={inputValue === "" || textareaValue === ""}
+        >
+          Dodaj
+        </button>
       </form>
     </>
   );
