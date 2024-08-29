@@ -1,9 +1,38 @@
+import { nanoid } from "nanoid";
 import { useState } from "react";
 
+const backendReviews = [
+  {
+    id: nanoid(),
+    author: "Jan Kowalski",
+    text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, nesciunt!",
+  },
+  {
+    id: nanoid(),
+    author: "Amelia Sarnowska",
+    text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique excepturi maxime quis veritatis, dignissimos quia.",
+  },
+  {
+    id: nanoid(),
+    author: "Katarzyna Atemborska",
+    text: "Lorem, ipsum dolor sit amet consectetur adipisicing.",
+  },
+];
+
 export const Reviews = () => {
-  const [review, setReview] = useState(null);
+  const [reviews, setReviews] = useState(backendReviews);
   const [inputValue, setInputValue] = useState("");
   const [textareaValue, setTextareaValue] = useState("");
+
+  const reviewsElement = reviews.map((review) => (
+    <article key={review.id}>
+      <p>
+        <strong>{review.author}:</strong>
+        <br />
+        {review.text}
+      </p>
+    </article>
+  ));
 
   const handleInput = (event) => {
     setInputValue(event.target.value);
@@ -17,14 +46,14 @@ export const Reviews = () => {
     event.preventDefault();
     const author = inputValue;
     const text = textareaValue;
-
-    setReview({ author, text });
+    setReviews([...reviews, { id: nanoid(), author, text }]);
   };
 
   return (
     <>
       <h2>Recenzje</h2>
-      {review ? (
+      {reviewsElement}
+      {/* {review ? (
         <article>
           <p>
             <strong>{review.author}:</strong>
@@ -34,7 +63,7 @@ export const Reviews = () => {
         </article>
       ) : (
         ""
-      )}
+      )} */}
       <h2>Dodaj recenzję</h2>
       <form onSubmit={handleReviewsForm}>
         <div>
