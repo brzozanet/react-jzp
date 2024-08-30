@@ -1,5 +1,6 @@
 import { nanoid } from "nanoid";
 import { useState } from "react";
+import { Review } from "./Review";
 
 const backendReviews = [
   {
@@ -25,13 +26,7 @@ export const Reviews = () => {
   const [textareaValue, setTextareaValue] = useState("");
 
   const reviewsElement = reviews.map((review) => (
-    <article key={review.id}>
-      <p>
-        <strong>{review.author}:</strong>
-        <br />
-        {review.text}
-      </p>
-    </article>
+    <Review author={review.author} text={review.text} key={nanoid()} />
   ));
 
   const handleInput = (event) => {
