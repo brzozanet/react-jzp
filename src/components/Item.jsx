@@ -5,9 +5,9 @@ export function Item({ emoji }) {
 
   // let emojiInlineSize;
   // if (zoomed) {
-  //   emojiInlineSize = "64px";
+  //   transform = "scale(2)";
   // } else {
-  //   emojiInlineSize = "32px";
+  //   transform = "scale(1)";
   // }
 
   return (
