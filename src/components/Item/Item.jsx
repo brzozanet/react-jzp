@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./Item.css";
 
 export function Item({ emoji }) {
   const [zoomed, setZoomed] = useState(false);

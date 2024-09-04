@@ -1,4 +1,4 @@
-import { List } from "./components/List";
+import { List } from "./components/List/List";
 
 function App() {
   return <List />;

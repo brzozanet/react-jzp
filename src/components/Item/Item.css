@@ -1,18 +1,3 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/* Lista / <List> */
-.list {
-  display: flex;
-  flex-direction: column;
-  list-style: none;
-  gap: 30px;
-  padding: 30px;
-}
-
 /* Element / <Item> -> li */
 .item {
   background: salmon;
