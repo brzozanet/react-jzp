@@ -19,6 +19,7 @@
   padding: 30px 50px;
   border-radius: 20px;
   text-align: center;
+  overflow: hidden;
 }
 
 /* Emoji / <Item> -> span */
@@ -26,6 +27,13 @@
   display: block;
   margin-bottom: 42px;
   font-size: 32px;
+  transition: transform 0.3s;
+}
+
+.emoji.zoomed {
+  /* font-size: 64px; */
+  /* better solution below */
+  transform: scale(2);
 }
 
 /* Button / <Item> -> button */
