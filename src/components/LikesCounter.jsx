@@ -1,8 +1,6 @@
-import { useState } from "react";
+/* eslint-disable react/prop-types */
 
-export const LikesCounter = () => {
-  const [numberOfLikes, setNumberOfLikes] = useState(null);
-
+export const LikesCounter = ({ numberOfLikes, setNumberOfLikes }) => {
   const handleLikeButtonClick = () => {
     setNumberOfLikes((prevNumber) => prevNumber + 1);
   };
