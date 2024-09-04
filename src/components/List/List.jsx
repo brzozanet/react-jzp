@@ -1,12 +1,12 @@
 import { nanoid } from "nanoid";
 import { Item } from "../Item/Item";
-import "./List.css";
+import css from "./List.module.css";
 
 const emojis = ["🚀", "🎶", "🎁", "🎉", "✨"];
 
 export function List() {
   return (
-    <ul className="list">
+    <ul className={css.list}>
       {emojis.map((emoji) => (
         <Item key={nanoid()} emoji={emoji} />
       ))}

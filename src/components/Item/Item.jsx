@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./Item.css";
+import css from "./Item.module.css";
 
 export function Item({ emoji }) {
   const [zoomed, setZoomed] = useState(false);
@@ -12,11 +12,12 @@ export function Item({ emoji }) {
   // }
 
   return (
-    <li className="item">
+    <li className={css.item}>
       {/* <span className="emoji" style={{ fontSize: emojiInlineSize }}> */}
+
       <span className={`emoji ${zoomed ? "zoomed" : ""}`}>{emoji}</span>
       <button
-        className="btn"
+        className={css.btn}
         onClick={() => {
           setZoomed((prevState) => !prevState);
         }}
