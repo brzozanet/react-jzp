@@ -15,7 +15,9 @@ export function Item({ emoji }) {
     <li className={css.item}>
       {/* <span className="emoji" style={{ fontSize: emojiInlineSize }}> */}
 
-      <span className={`emoji ${zoomed ? "zoomed" : ""}`}>{emoji}</span>
+      <span className={`${css.emoji} ${zoomed ? css.zoomed : ""}`}>
+        {emoji}
+      </span>
       <button
         className={css.btn}
         onClick={() => {
