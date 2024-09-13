@@ -1,5 +1,5 @@
-import styles from "./ErrorMessage.module.css";
+import css from "./ErrorMessage.module.css";
 
 export function ErrorMessage({ children }) {
-    return <span className={styles.error}>{children}</span>;
+  return <span className={css.error}>{children}</span>;
 }

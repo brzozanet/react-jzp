@@ -1,11 +1,12 @@
 import { Item } from "../Item/Item";
-import styles from "./List.module.css";
+import css from "./List.module.css";
+
 export function List({ data }) {
-    return (
-        <ul className={styles.list}>
-            {data.map(({ id, word, translation }) => (
-                <Item key={id} id={id} word={word} translation={translation} />
-            ))}
-        </ul>
-    );
+  return (
+    <ul className={css.list}>
+      {data.map(({ id, word, translation }) => (
+        <Item key={id} id={id} word={word} translation={translation} />
+      ))}
+    </ul>
+  );
 }
