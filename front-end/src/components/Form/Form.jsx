@@ -20,7 +20,6 @@ export function Form({ addWord }) {
     setTranslation("");
     setCategory("noun");
   }
-
   return (
     <form onSubmit={handleSubmit} className={css.form}>
       <div className={css.row}>

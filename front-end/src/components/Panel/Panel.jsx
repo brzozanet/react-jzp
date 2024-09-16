@@ -3,10 +3,12 @@ import { List } from "../List/List";
 import { Form } from "../Form/Form";
 import css from "./Panel.module.css";
 import { Loader } from "../Loader/Loader";
+import { ErrorMessage } from "../ErrorMessage/ErrorMessage";
 
 export function Panel() {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [errorText, setErrorText] = useState(null);
 
   useEffect(() => {
     fetch("http://localhost:3000/words")
@@ -24,12 +26,11 @@ export function Panel() {
           setIsLoading(false);
         }, 1000);
       })
-      .catch((error) => console.error(error));
+      .catch((error) => console.error("BŁĄD!", error));
   }, []);
 
   const addWord = (newItem) => {
-    console.log(newItem);
-    fetch("http://localhost:3000/words", {
+    fetch("http://localhost:3000/words2", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -37,14 +38,34 @@ export function Panel() {
       body: JSON.stringify(newItem),
     })
       .then((response) => response.json())
-      .then((data) => setData((prevState) => [...prevState, data]));
+      .then((response) => {
+        if (response.ok) {
+          setData((prevState) => [...prevState, response]);
+        } else throw Error("Wystąpił błąd podczas dodawania słowa");
+      })
+      .catch((error) => {
+        setErrorText(error.message);
+        setTimeout(() => {
+          setErrorText(null);
+        }, 3000);
+      });
   };
 
   const deleteWord = (id) => {
-    console.log(id);
-    fetch(`http://localhost:3000/words/${id}`, {
+    fetch(`http://localhost:3000/words/${id}2`, {
       method: "DELETE",
-    }).then(setData((prevState) => prevState.filter((word) => word.id !== id)));
+    })
+      .then((response) => {
+        if (response.ok) {
+          setData((prevState) => prevState.filter((word) => word.id !== id));
+        } else throw Error("Wystąpił błąd podczas usuwania słowa");
+      })
+      .catch((error) => {
+        setErrorText(error.message);
+        setTimeout(() => {
+          setErrorText(null);
+        }, 3000);
+      });
   };
 
   return (
@@ -53,6 +74,7 @@ export function Panel() {
         <Loader />
       ) : (
         <section className={css.section}>
+          {errorText && <ErrorMessage>{errorText}</ErrorMessage>}
           <Form addWord={addWord} />
           <List data={data} deleteWord={deleteWord} />
         </section>
