@@ -40,6 +40,13 @@ export function Panel() {
       .then((data) => setData((prevState) => [...prevState, data]));
   };
 
+  const deleteWord = (id) => {
+    console.log(id);
+    fetch(`http://localhost:3000/words/${id}`, {
+      method: "DELETE",
+    }).then(setData((prevState) => prevState.filter((word) => word.id !== id)));
+  };
+
   return (
     <>
       {isLoading ? (
@@ -47,7 +54,7 @@ export function Panel() {
       ) : (
         <section className={css.section}>
           <Form addWord={addWord} />
-          <List data={data} />
+          <List data={data} deleteWord={deleteWord} />
         </section>
       )}
     </>

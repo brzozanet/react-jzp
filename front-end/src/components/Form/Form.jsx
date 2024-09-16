@@ -16,6 +16,9 @@ export function Form({ addWord }) {
     };
 
     addWord(newItem);
+    setWord("");
+    setTranslation("");
+    setCategory("noun");
   }
 
   return (

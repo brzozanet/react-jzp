@@ -1,11 +1,11 @@
 import { useState } from "react";
 import css from "./Item.module.css";
 
-export function Item({ word, translation, id }) {
+export function Item({ word, translation, id, deleteWord }) {
   const [isTranslationShown, setIsTranslationShown] = useState(false);
 
   function handleDeleteClick() {
-    alert(`Delete element with ID: ${id}`);
+    deleteWord(id);
   }
 
   return (
