@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { List } from "../List/List";
+import { Form } from "../Form/Form";
 import css from "./Panel.module.css";
 import { Loader } from "../Loader/Loader";
 
@@ -11,6 +12,7 @@ export function Panel() {
     fetch("http://localhost:3000/words")
       .then((response) => response.json())
       .then((data) => {
+        console.log("data: ");
         console.log(data);
         return data;
       })
@@ -25,13 +27,27 @@ export function Panel() {
       .catch((error) => console.error(error));
   }, []);
 
+  const addWord = (newItem) => {
+    console.log(newItem);
+    fetch("http://localhost:3000/words", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newItem),
+    })
+      .then((response) => response.json())
+      .then((data) => setData((prevState) => [...prevState, data]));
+  };
+
   return (
     <>
       {isLoading ? (
         <Loader />
       ) : (
         <section className={css.section}>
-          <List data={data}></List>
+          <Form addWord={addWord} />
+          <List data={data} />
         </section>
       )}
     </>

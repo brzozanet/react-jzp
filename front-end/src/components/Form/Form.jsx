@@ -2,20 +2,20 @@ import { useState } from "react";
 import css from "./Form.module.css";
 import { Button } from "../Button/Button";
 
-export function Form() {
+export function Form({ addWord }) {
   const [word, setWord] = useState("");
   const [translation, setTranslation] = useState("");
   const [category, setCategory] = useState("noun");
 
-  function handleSubmit(e) {
-    e.preventDefault();
+  function handleSubmit(event) {
+    event.preventDefault();
     const newItem = {
       word,
       translation,
       category,
     };
 
-    alert(JSON.stringify(newItem));
+    addWord(newItem);
   }
 
   return (
