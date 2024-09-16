@@ -30,7 +30,7 @@ export function Panel() {
   }, []);
 
   const addWord = (newItem) => {
-    fetch("http://localhost:3000/words2", {
+    fetch("http://localhost:3000/words", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -52,7 +52,7 @@ export function Panel() {
   };
 
   const deleteWord = (id) => {
-    fetch(`http://localhost:3000/words/${id}2`, {
+    fetch(`http://localhost:3000/words/${id}`, {
       method: "DELETE",
     })
       .then((response) => {
