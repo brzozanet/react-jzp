@@ -41,7 +41,7 @@ export function Panel() {
       .then((response) => {
         if (response.ok) {
           setData((prevState) => [...prevState, response]);
-        } else throw Error("Wystąpił błąd podczas dodawania słowa");
+        } else throw Error("Błąd podczas dodawania słowa!");
       })
       .catch((error) => {
         setErrorText(error.message);
@@ -58,7 +58,7 @@ export function Panel() {
       .then((response) => {
         if (response.ok) {
           setData((prevState) => prevState.filter((word) => word.id !== id));
-        } else throw Error("Wystąpił błąd podczas usuwania słowa");
+        } else throw Error("Błąd podczas usuwania słowa!");
       })
       .catch((error) => {
         setErrorText(error.message);
