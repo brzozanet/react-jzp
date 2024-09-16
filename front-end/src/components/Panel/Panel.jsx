@@ -73,11 +73,13 @@ export function Panel() {
       {isLoading ? (
         <Loader />
       ) : (
-        <section className={css.section}>
+        <>
           {errorText && <ErrorMessage>{errorText}</ErrorMessage>}
-          <Form addWord={addWord} />
-          <List data={data} deleteWord={deleteWord} />
-        </section>
+          <section className={css.section}>
+            <Form addWord={addWord} />
+            <List data={data} deleteWord={deleteWord} />
+          </section>
+        </>
       )}
     </>
   );
