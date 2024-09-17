@@ -6,13 +6,15 @@ import { Loader } from "../Loader/Loader";
 import { ErrorMessage } from "../ErrorMessage/ErrorMessage";
 import { FilterButton } from "../FilterButton/FilterButton";
 
+const API_URL = "http://localhost:3000";
+
 export function Panel() {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [errorText, setErrorText] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:3000/words")
+    fetch(`${API_URL}/words`)
       .then((response) => response.json())
       .then((data) => {
         console.log("data: ");
@@ -31,7 +33,7 @@ export function Panel() {
   }, []);
 
   const addWord = (newItem) => {
-    fetch("http://localhost:3000/words", {
+    fetch(`${API_URL}/words`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -57,14 +59,34 @@ export function Panel() {
   };
 
   const deleteWord = (id) => {
-    fetch(`http://localhost:3000/words/${id}`, {
+    fetch(`${API_URL}/words/${id}`, {
       method: "DELETE",
     })
       .then((response) => {
         if (response.ok) {
           setData((prevState) => prevState.filter((word) => word.id !== id));
-        } else throw Error("Błąd podczas usuwania słowa");
+        } else {
+          throw Error("Błąd podczas usuwania słowa");
+        }
       })
+      .catch((error) => {
+        setErrorText(error.message);
+        setTimeout(() => {
+          setErrorText(null);
+        }, 3000);
+      });
+  };
+
+  const handleSelectCategory = (categoryName) => {
+    fetch(`${API_URL}/words11?category=${categoryName}`)
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error("Błąd podczas wyświetlania");
+        }
+      })
+      .then((data) => setData(data))
       .catch((error) => {
         setErrorText(error.message);
         setTimeout(() => {
@@ -84,8 +106,12 @@ export function Panel() {
             <Form addWord={addWord} />
             <div className={css.filters}>
               <FilterButton>Wszystkie</FilterButton>
-              <FilterButton>Rzeczowniki</FilterButton>
-              <FilterButton>Czasowniki</FilterButton>
+              <FilterButton onClick={() => handleSelectCategory("noun")}>
+                Rzeczowniki
+              </FilterButton>
+              <FilterButton onClick={() => handleSelectCategory("verb")}>
+                Czasowniki
+              </FilterButton>
             </div>
             <List data={data} deleteWord={deleteWord} />
           </section>
