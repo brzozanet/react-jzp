@@ -38,11 +38,15 @@ export function Panel() {
       },
       body: JSON.stringify(newItem),
     })
-      .then((response) => response.json())
       .then((response) => {
         if (response.ok) {
-          setData((prevState) => [...prevState, response]);
-        } else throw new Error("Błąd podczas dodawania słowa!");
+          return response.json();
+        } else {
+          throw new Error("Błąd podczas dodawania słowa");
+        }
+      })
+      .then((data) => {
+        setData((prevState) => [...prevState, data]);
       })
       .catch((error) => {
         setErrorText(error.message);
@@ -59,23 +63,7 @@ export function Panel() {
       .then((response) => {
         if (response.ok) {
           setData((prevState) => prevState.filter((word) => word.id !== id));
-        } else throw Error("Błąd podczas usuwania słowa!");
-      })
-      .catch((error) => {
-        setErrorText(error.message);
-        setTimeout(() => {
-          setErrorText(null);
-        }, 3000);
-      });
-  };
-
-  const handleSelectCategoryClick = (categoryName) => {
-    fetch(`http://localhost:3000/words?category=${categoryName}`)
-      .then((response) => response.json())
-      .then((response) => {
-        if (response.ok) {
-          setData(response);
-        } else throw new Error("Błąd podczas pobierania danych");
+        } else throw Error("Błąd podczas usuwania słowa");
       })
       .catch((error) => {
         setErrorText(error.message);
@@ -96,12 +84,8 @@ export function Panel() {
             <Form addWord={addWord} />
             <div className={css.filters}>
               <FilterButton>Wszystkie</FilterButton>
-              <FilterButton onClick={() => handleSelectCategoryClick("noun")}>
-                Rzeczowniki
-              </FilterButton>
-              <FilterButton onClick={() => handleSelectCategoryClick("verb")}>
-                Czasowniki
-              </FilterButton>
+              <FilterButton>Rzeczowniki</FilterButton>
+              <FilterButton>Czasowniki</FilterButton>
             </div>
             <List data={data} deleteWord={deleteWord} />
           </section>
