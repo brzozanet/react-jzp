@@ -12,9 +12,15 @@ export function Panel() {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [errorText, setErrorText] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState("");
 
   useEffect(() => {
-    fetch(`${API_URL}/words`)
+    let fetchUrlEnd;
+    selectedCategory
+      ? (fetchUrlEnd = `?category=${selectedCategory}`)
+      : (fetchUrlEnd = "");
+
+    fetch(`${API_URL}/words${fetchUrlEnd}`)
       .then((response) => response.json())
       .then((data) => {
         console.log("data: ");
@@ -30,7 +36,7 @@ export function Panel() {
         }, 1000);
       })
       .catch((error) => console.error("BŁĄD!", error));
-  }, []);
+  }, [selectedCategory]);
 
   const addWord = (newItem) => {
     fetch(`${API_URL}/words`, {
@@ -78,21 +84,7 @@ export function Panel() {
   };
 
   const handleSelectCategory = (categoryName) => {
-    fetch(`${API_URL}/words11?category=${categoryName}`)
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          throw new Error("Błąd podczas wyświetlania");
-        }
-      })
-      .then((data) => setData(data))
-      .catch((error) => {
-        setErrorText(error.message);
-        setTimeout(() => {
-          setErrorText(null);
-        }, 3000);
-      });
+    setSelectedCategory(categoryName);
   };
 
   return (
@@ -105,7 +97,9 @@ export function Panel() {
           <section className={css.section}>
             <Form addWord={addWord} />
             <div className={css.filters}>
-              <FilterButton>Wszystkie</FilterButton>
+              <FilterButton onClick={() => handleSelectCategory("")}>
+                Wszystkie
+              </FilterButton>
               <FilterButton onClick={() => handleSelectCategory("noun")}>
                 Rzeczowniki
               </FilterButton>
