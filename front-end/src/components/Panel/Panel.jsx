@@ -12,7 +12,7 @@ export function Panel() {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [errorText, setErrorText] = useState(null);
-  const [selectedCategory, setSelectedCategory] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState(null);
 
   useEffect(() => {
     let fetchUrlEnd;
@@ -25,6 +25,8 @@ export function Panel() {
       .then((data) => {
         console.log("data: ");
         console.log(data);
+        console.log("category: ");
+        console.log(selectedCategory);
         return data;
       })
       .then((data) => {
@@ -54,7 +56,15 @@ export function Panel() {
         }
       })
       .then((data) => {
-        setData((prevState) => [...prevState, data]);
+        if (
+          selectedCategory === newItem.category ||
+          selectedCategory === null
+        ) {
+          console.log("taka sama kategoria");
+          setData((prevState) => [...prevState, data]);
+        } else {
+          console.log("inna kategoria");
+        }
       })
       .catch((error) => {
         setErrorText(error.message);
@@ -97,7 +107,7 @@ export function Panel() {
           <section className={css.section}>
             <Form addWord={addWord} />
             <div className={css.filters}>
-              <FilterButton onClick={() => handleSelectCategory("")}>
+              <FilterButton onClick={() => handleSelectCategory(null)}>
                 Wszystkie
               </FilterButton>
               <FilterButton onClick={() => handleSelectCategory("noun")}>
