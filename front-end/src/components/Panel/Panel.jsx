@@ -18,12 +18,12 @@ export function Panel() {
 
   useEffect(() => {
     let isCanceled = false;
-    let fetchUrlEnd;
+    let params;
     selectedCategory
-      ? (fetchUrlEnd = `?category=${selectedCategory}`)
-      : (fetchUrlEnd = "");
+      ? (params = `?category=${selectedCategory}`)
+      : (params = "");
 
-    fetch(`${API_URL}/words${fetchUrlEnd}`)
+    fetch(`${API_URL}/words${params}`)
       .then((response) => response.json())
       .then((data) => {
         if (!isCanceled) {
