@@ -23,8 +23,14 @@ export function Panel() {
       ? (params = `?category=${selectedCategory}`)
       : (params = "");
 
-    fetch(`${API_URL}/words${params}`)
-      .then((response) => response.json())
+    fetch(`${API_URL}/wordsss${params}`)
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error("Błąd podczas ładowania danych");
+        }
+      })
       .then((data) => {
         if (!isCanceled) {
           setData(data);
@@ -35,7 +41,9 @@ export function Panel() {
           }, 1000);
         }
       })
-      .catch((error) => console.error("BŁĄD!", error));
+      .catch((error) => {
+        setErrorText(error.message);
+      });
 
     return () => {
       isCanceled = true;
