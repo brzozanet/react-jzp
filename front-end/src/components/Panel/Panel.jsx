@@ -3,17 +3,15 @@ import { List } from "../List/List";
 import { Form } from "../Form/Form";
 import css from "./Panel.module.css";
 import { Loader } from "../Loader/Loader";
-import { ErrorMessage } from "../ErrorMessage/ErrorMessage";
 import { FilterButton } from "../FilterButton/FilterButton";
 import { getCategoryInfo } from "../../utils/getCategoryInfo";
 import { Info } from "../Info/Info";
 
 const API_URL = "http://localhost:3000";
 
-export function Panel() {
+export function Panel({ setErrorText }) {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [errorText, setErrorText] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState(null);
 
   useEffect(() => {
@@ -23,7 +21,7 @@ export function Panel() {
       ? (params = `?category=${selectedCategory}`)
       : (params = "");
 
-    fetch(`${API_URL}/wordsss${params}`)
+    fetch(`${API_URL}/wordsxxx${params}`)
       .then((response) => {
         if (response.ok) {
           return response.json();
@@ -120,7 +118,6 @@ export function Panel() {
         <Loader />
       ) : (
         <>
-          {errorText && <ErrorMessage>{errorText}</ErrorMessage>}
           <section className={css.section}>
             <Info>{categoryInfoText}</Info>
             <Form addWord={addWord} />
