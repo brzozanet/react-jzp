@@ -43,6 +43,12 @@ export function Panel() {
       })
       .catch((error) => {
         setErrorText(error.message);
+        // NOTE: setTimeout to show the loader
+        // setIsLoading(false);
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 1000);
+        setTimeout(() => setErrorText(null), 3000);
       });
 
     return () => {
