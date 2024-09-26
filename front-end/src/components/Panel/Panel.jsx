@@ -9,7 +9,7 @@ import { Info } from "../Info/Info";
 
 const API_URL = "http://localhost:3000";
 
-export function Panel({ setErrorText }) {
+export function Panel({ setErrorText, handleError }) {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -37,22 +37,23 @@ export function Panel({ setErrorText }) {
           setTimeout(() => {
             setIsLoading(false);
           }, 1000);
+          //
         }
       })
       .catch((error) => {
-        setErrorText(error.message);
         // NOTE: setTimeout to show the loader
         // setIsLoading(false);
         setTimeout(() => {
           setIsLoading(false);
         }, 1000);
-        setTimeout(() => setErrorText(null), 3000);
+        //
+        handleError(error);
       });
 
     return () => {
       isCanceled = true;
     };
-  }, [selectedCategory]);
+  }, [selectedCategory, handleError]);
 
   const categoryInfoText = useMemo(() => {
     return getCategoryInfo(selectedCategory);
@@ -82,10 +83,7 @@ export function Panel({ setErrorText }) {
         }
       })
       .catch((error) => {
-        setErrorText(error.message);
-        setTimeout(() => {
-          setErrorText(null);
-        }, 3000);
+        handleError(error);
       });
   };
 

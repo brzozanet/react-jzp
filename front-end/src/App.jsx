@@ -6,12 +6,19 @@ import { ErrorMessage } from "./components/ErrorMessage/ErrorMessage";
 function App() {
   const [errorText, setErrorText] = useState(null);
 
+  const handleError = (error) => {
+    setErrorText(error.message);
+    setTimeout(() => {
+      setErrorText(null);
+    }, 3000);
+  };
+
   return (
     <main className={css.main}>
       {errorText ? (
-        errorText && <ErrorMessage>{errorText}</ErrorMessage>
+        <ErrorMessage>{errorText}</ErrorMessage>
       ) : (
-        <Panel setErrorText={setErrorText} />
+        <Panel setErrorText={setErrorText} handleError={handleError} />
       )}
     </main>
   );
