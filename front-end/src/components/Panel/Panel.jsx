@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { List } from "../List/List";
 import { Form } from "../Form/Form";
 import css from "./Panel.module.css";
 import { Loader } from "../Loader/Loader";
 import { ErrorMessage } from "../ErrorMessage/ErrorMessage";
 import { FilterButton } from "../FilterButton/FilterButton";
+import { getCategoryInfo } from "../../utils/getCategoryInfo";
+import { Info } from "../Info/Info";
 
 const API_URL = "http://localhost:3000";
 
@@ -40,6 +42,10 @@ export function Panel() {
     };
   }, [selectedCategory]);
 
+  const categoryInfoText = useMemo(() => {
+    return getCategoryInfo(selectedCategory);
+  }, [selectedCategory]);
+
   const addWord = (newItem) => {
     fetch(`${API_URL}/words`, {
       method: "POST",
@@ -60,10 +66,7 @@ export function Panel() {
           selectedCategory === newItem.category ||
           selectedCategory === null
         ) {
-          console.log("taka sama kategoria");
           setData((prevState) => [...prevState, data]);
-        } else {
-          console.log("inna kategoria");
         }
       })
       .catch((error) => {
@@ -105,6 +108,7 @@ export function Panel() {
         <>
           {errorText && <ErrorMessage>{errorText}</ErrorMessage>}
           <section className={css.section}>
+            <Info>{categoryInfoText}</Info>
             <Form addWord={addWord} />
             <div className={css.filters}>
               <FilterButton
