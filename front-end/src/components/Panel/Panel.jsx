@@ -15,6 +15,7 @@ export function Panel() {
   const [selectedCategory, setSelectedCategory] = useState(null);
 
   useEffect(() => {
+    let isCanceled = false;
     let fetchUrlEnd;
     selectedCategory
       ? (fetchUrlEnd = `?category=${selectedCategory}`)
@@ -23,21 +24,20 @@ export function Panel() {
     fetch(`${API_URL}/words${fetchUrlEnd}`)
       .then((response) => response.json())
       .then((data) => {
-        console.log("data: ");
-        console.log(data);
-        console.log("category: ");
-        console.log(selectedCategory);
-        return data;
-      })
-      .then((data) => {
-        setData(data);
-        // NOTE: setTimeout to show the loader
-        // setIsLoading(false);
-        setTimeout(() => {
-          setIsLoading(false);
-        }, 1000);
+        if (!isCanceled) {
+          setData(data);
+          // NOTE: setTimeout to show the loader
+          // setIsLoading(false);
+          setTimeout(() => {
+            setIsLoading(false);
+          }, 1000);
+        }
       })
       .catch((error) => console.error("BŁĄD!", error));
+
+    return () => {
+      isCanceled = true;
+    };
   }, [selectedCategory]);
 
   const addWord = (newItem) => {
