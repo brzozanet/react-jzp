@@ -107,25 +107,24 @@ export function Panel() {
           <section className={css.section}>
             <Form addWord={addWord} />
             <div className={css.filters}>
-              <div className={!selectedCategory ? css.activeFilter : ""}>
-                <FilterButton onClick={() => handleSelectCategory(null)}>
-                  Wszystkie
-                </FilterButton>
-              </div>
-              <div
-                className={selectedCategory === "noun" ? css.activeFilter : ""}
+              <FilterButton
+                onClick={() => handleSelectCategory(null)}
+                active={selectedCategory === null}
               >
-                <FilterButton onClick={() => handleSelectCategory("noun")}>
-                  Rzeczowniki
-                </FilterButton>
-              </div>
-              <div
-                className={selectedCategory === "verb" ? css.activeFilter : ""}
+                Wszystkie
+              </FilterButton>
+              <FilterButton
+                onClick={() => handleSelectCategory("noun")}
+                active={selectedCategory === "noun"}
               >
-                <FilterButton onClick={() => handleSelectCategory("verb")}>
-                  Czasowniki
-                </FilterButton>
-              </div>
+                Rzeczowniki
+              </FilterButton>
+              <FilterButton
+                onClick={() => handleSelectCategory("verb")}
+                active={selectedCategory === "verb"}
+              >
+                Czasowniki
+              </FilterButton>
             </div>
             <List data={data} deleteWord={deleteWord} />
           </section>
