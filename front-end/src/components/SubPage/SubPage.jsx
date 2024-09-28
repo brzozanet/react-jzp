@@ -2,7 +2,7 @@ import css from "./SubPage.module.css";
 import { memo } from "react";
 
 function SubPage() {
-  // console.log("Render SubPage");
+  // console.log("Render SubPage.");
   return (
     <section className={css.section}>
       <p>
