@@ -40,7 +40,6 @@ export function Panel({ onMainError }) {
             setIsLoading(false);
           }, 1000);
           //
-          console.log("then");
         }
       })
       .catch((error) => {
