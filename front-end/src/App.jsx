@@ -1,24 +1,24 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import css from "./App.module.css";
 import { Panel } from "./components/Panel/Panel";
 import { ErrorMessage } from "./components/ErrorMessage/ErrorMessage";
 
 function App() {
-  const [errorText, setErrorText] = useState(null);
+  const [mainErrorText, setMainErrorText] = useState(null);
 
-  const handleError = (error) => {
-    setErrorText(error.message);
-    setTimeout(() => {
-      setErrorText(null);
-    }, 3000);
-  };
+  const handleError = useCallback((error) => {
+    setMainErrorText(error.message);
+    // setTimeout(() => {
+    //   setMainErrorText(null);
+    // }, 3000);
+  }, []);
 
   return (
     <main className={css.main}>
-      {errorText ? (
-        <ErrorMessage>{errorText}</ErrorMessage>
+      {mainErrorText ? (
+        <ErrorMessage>{mainErrorText}</ErrorMessage>
       ) : (
-        <Panel setErrorText={setErrorText} handleError={handleError} />
+        <Panel onMainError={handleError} />
       )}
     </main>
   );

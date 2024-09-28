@@ -6,13 +6,15 @@ import { Loader } from "../Loader/Loader";
 import { FilterButton } from "../FilterButton/FilterButton";
 import { getCategoryInfo } from "../../utils/getCategoryInfo";
 import { Info } from "../Info/Info";
+import { ErrorMessage } from "../ErrorMessage/ErrorMessage";
 
 const API_URL = "http://localhost:3000";
 
-export function Panel({ setErrorText, handleError }) {
+export function Panel({ onMainError }) {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState(null);
+  const [panelErrorText, setPanelErrorText] = useState(null);
 
   useEffect(() => {
     let isCanceled = false;
@@ -21,7 +23,7 @@ export function Panel({ setErrorText, handleError }) {
       ? (params = `?category=${selectedCategory}`)
       : (params = "");
 
-    fetch(`${API_URL}/wordsxxx${params}`)
+    fetch(`${API_URL}/words${params}`)
       .then((response) => {
         if (response.ok) {
           return response.json();
@@ -38,22 +40,17 @@ export function Panel({ setErrorText, handleError }) {
             setIsLoading(false);
           }, 1000);
           //
+          console.log("then");
         }
       })
       .catch((error) => {
-        // NOTE: setTimeout to show the loader
-        // setIsLoading(false);
-        setTimeout(() => {
-          setIsLoading(false);
-        }, 1000);
-        //
-        handleError(error);
+        onMainError(error);
       });
 
     return () => {
       isCanceled = true;
     };
-  }, [selectedCategory, handleError]);
+  }, [selectedCategory, onMainError]);
 
   const categoryInfoText = useMemo(() => {
     return getCategoryInfo(selectedCategory);
@@ -83,7 +80,10 @@ export function Panel({ setErrorText, handleError }) {
         }
       })
       .catch((error) => {
-        handleError(error);
+        setPanelErrorText(error.message);
+        setTimeout(() => {
+          setPanelErrorText(null);
+        }, 3000);
       });
   };
 
@@ -99,9 +99,9 @@ export function Panel({ setErrorText, handleError }) {
         }
       })
       .catch((error) => {
-        setErrorText(error.message);
+        setPanelErrorText(error.message);
         setTimeout(() => {
-          setErrorText(null);
+          setPanelErrorText(null);
         }, 3000);
       });
   };
@@ -116,6 +116,8 @@ export function Panel({ setErrorText, handleError }) {
         <Loader />
       ) : (
         <>
+          {panelErrorText && <ErrorMessage>{panelErrorText}</ErrorMessage>}
+
           <section className={css.section}>
             <Info>{categoryInfoText}</Info>
             <Form addWord={addWord} />
