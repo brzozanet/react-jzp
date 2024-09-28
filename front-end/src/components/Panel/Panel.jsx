@@ -7,6 +7,7 @@ import { FilterButton } from "../FilterButton/FilterButton";
 import { getCategoryInfo } from "../../utils/getCategoryInfo";
 import { Info } from "../Info/Info";
 import { ErrorMessage } from "../ErrorMessage/ErrorMessage";
+import { SubPageMemo } from "../SubPage/SubPage";
 
 const API_URL = "http://localhost:3000";
 
@@ -109,6 +110,8 @@ export function Panel({ onMainError }) {
     setSelectedCategory(categoryName);
   };
 
+  // const subPageWithUseMemo = useMemo(() => <SubPage />, []);
+
   return (
     <>
       {isLoading ? (
@@ -142,6 +145,8 @@ export function Panel({ onMainError }) {
             </div>
             <List data={data} deleteWord={deleteWord} />
           </section>
+          <SubPageMemo />
+          {/* {subPageWithUseMemo} */}
         </>
       )}
     </>

@@ -1,6 +1,8 @@
 import css from "./SubPage.module.css";
+import { memo } from "react";
 
-export function SubPage() {
+function SubPage() {
+  // console.log("Render SubPage");
   return (
     <section className={css.section}>
       <p>
@@ -13,31 +15,33 @@ export function SubPage() {
 
       <p>
         Wczesne początki pisemności w języku angielskim sięgają VIII wieku, a
-        pierwsze znane zapisane słowo to "town" (miasto). Rozwój literatury
-        angielskiej, od "Beowulfa" do Szekspira, ukształtował język, wpływając
-        na formowanie się gramatyki i słownictwa.
+        pierwsze znane zapisane słowo to &ldquo;town&ldquo; (miasto). Rozwój
+        literatury angielskiej, od &ldquo;Beowulfa&ldquo; do Szekspira,
+        ukształtował język, wpływając na formowanie się gramatyki i słownictwa.
       </p>
 
       <p>
-        Spośród wszystkich słów, "I" (ja) jest najkrótszym pełnym zdaniem w
-        języku angielskim. To przykład prostoty i elastyczności tego języka.
-        Jednocześnie "I" jest jednym z najsilniej używanych słów,
-        odzwierciedlając indywidualizm i komunikację.
+        Spośród wszystkich słów, &ldquo;I&ldquo; (ja) jest najkrótszym pełnym
+        zdaniem w języku angielskim. To przykład prostoty i elastyczności tego
+        języka. Jednocześnie &ldquo;I&ldquo; jest jednym z najsilniej używanych
+        słów, odzwierciedlając indywidualizm i komunikację.
       </p>
 
       <p>
-        Słowo "set" ma niesamowitą różnorodność znaczeniową. W Oxford English
-        Dictionary odnaleziono ponad 450 różnych znaczeń dla tego słowa.
-        Obejmuje ono konteksty od ustawienia rzeczy po ustanowienie rekordu,
-        ilustrując bogactwo angielskiego słownictwa.
+        Słowo &ldquo;set&ldquo; ma niesamowitą różnorodność znaczeniową. W
+        Oxford English Dictionary odnaleziono ponad 450 różnych znaczeń dla tego
+        słowa. Obejmuje ono konteksty od ustawienia rzeczy po ustanowienie
+        rekordu, ilustrując bogactwo angielskiego słownictwa.
       </p>
 
       <p>
-        "Uncopyrightable" (niemożliwy do opatentowania) jest jednym z
-        najdłuższych słów, w którym żadna litera się nie powtarza. To unikalne
+        &ldquo;Uncopyrightable&ldquo; (niemożliwy do opatentowania) jest jednym
+        z najdłuższych słów, w którym żadna litera się nie powtarza. To unikalne
         słowo, które samo w sobie ilustruje zawiłość i zabawę możliwą w języku
         angielskim, zarówno w jego używaniu, jak i tworzeniu.
       </p>
     </section>
   );
 }
+
+export const SubPageMemo = memo(SubPage);
