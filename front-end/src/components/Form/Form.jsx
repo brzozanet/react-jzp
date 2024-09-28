@@ -66,7 +66,7 @@ export function Form({ addWord }) {
         <label htmlFor="category-verb">Czasownik</label>
       </div>
       <div>
-        <Button>Dodaj</Button>
+        <Button disabled={(true && !word) || !translation}>Dodaj</Button>
       </div>
     </form>
   );
