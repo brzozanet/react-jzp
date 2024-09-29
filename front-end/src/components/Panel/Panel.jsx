@@ -8,6 +8,7 @@ import { getCategoryInfo } from "../../utils/getCategoryInfo";
 import { Info } from "../Info/Info";
 import { ErrorMessage } from "../ErrorMessage/ErrorMessage";
 import { SubPageMemo } from "../SubPage/SubPage";
+import { Timer } from "../Timer/Timer";
 
 const API_URL = "http://localhost:3000";
 
@@ -119,7 +120,7 @@ export function Panel({ onMainError }) {
       ) : (
         <>
           {panelErrorText && <ErrorMessage>{panelErrorText}</ErrorMessage>}
-
+          <Timer />
           <section className={css.section}>
             <Info>{categoryInfoText}</Info>
             <Form addWord={addWord} />
