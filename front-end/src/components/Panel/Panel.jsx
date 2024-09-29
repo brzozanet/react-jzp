@@ -24,7 +24,7 @@ export function Panel({ onMainError }) {
       ? (params = `?category=${selectedCategory}`)
       : (params = "");
 
-    fetch(`${API_URL}/wordsxxx${params}`)
+    fetch(`${API_URL}/words${params}`)
       .then((response) => {
         if (response.ok) {
           return response.json();
