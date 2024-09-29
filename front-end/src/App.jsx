@@ -6,21 +6,32 @@ import { ErrorMessage } from "./components/ErrorMessage/ErrorMessage";
 function App() {
   const [mainErrorText, setMainErrorText] = useState(null);
 
-  const handleError = useCallback((error) => {
+  // const handleError = useCallback((error) => {
+  //   setMainErrorText(error.message);
+  //   // setTimeout(() => {
+  //   //   setMainErrorText(null);
+  //   // }, 3000);
+  // }, []);
+
+  const handleError = (error) => {
     setMainErrorText(error.message);
-    // setTimeout(() => {
-    //   setMainErrorText(null);
-    // }, 3000);
-  }, []);
+    setTimeout(() => {
+      setMainErrorText(null);
+    }, 3000);
+  };
 
   return (
     <main className={css.main}>
-      {mainErrorText ? (
-        <ErrorMessage>{mainErrorText}</ErrorMessage>
-      ) : (
-        <Panel onMainError={handleError} />
-      )}
+      {mainErrorText && <ErrorMessage>{mainErrorText}</ErrorMessage>}
+      <Panel onMainError={handleError} />
     </main>
+    // <main className={css.main}>
+    //   {mainErrorText ? (
+    //     <ErrorMessage>{mainErrorText}</ErrorMessage>
+    //   ) : (
+    //     <Panel onMainError={handleError} />
+    //   )}
+    // </main>
   );
 }
 
