@@ -1,17 +1,18 @@
-import styles from "./Recipe.module.css";
+import { nanoid } from "nanoid";
+import css from "./Recipe.module.css";
 
 export function Recipe({ name, ingredients, description, img }) {
-    return (
-        <>
-            <h2>{name}</h2>
-            <img src={img} alt="" className={styles.img} />
-            <span>Składniki:</span>
-            <ul className={styles.list}>
-                {ingredients.map((ingredient) => (
-                    <li key={ingredient}>{ingredient}</li>
-                ))}
-            </ul>
-            <p className={styles.description}>{description}</p>
-        </>
-    );
+  return (
+    <>
+      <h2>{name}</h2>
+      <img src={img} alt="" className={css.img} />
+      <span>Składniki:</span>
+      <ul className={css.list}>
+        {ingredients.map((ingredient) => (
+          <li key={nanoid()}>{ingredient}</li>
+        ))}
+      </ul>
+      <p className={css.description}>{description}</p>
+    </>
+  );
 }

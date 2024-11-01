@@ -1,12 +1,12 @@
-import styles from "./Button.module.css";
+import css from "./Button.module.css";
 
 export function Button({ active, onClick, children }) {
-    return (
-        <button
-            onClick={onClick}
-            className={`${styles.button} ${active ? styles.active : ""}`}
-        >
-            {children}
-        </button>
-    );
+  return (
+    <button
+      onClick={onClick}
+      className={`${css.button} ${active ? css.active : ""}`}
+    >
+      {children}
+    </button>
+  );
 }
