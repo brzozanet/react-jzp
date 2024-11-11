@@ -1,16 +1,11 @@
 import { Article } from "../Article/Article";
 import css from "./Cookbook.module.css";
 
-export function Cookbook({ name, ingredients, description, img }) {
+export function Cookbook({ selectedRecipe, title }) {
   return (
     <main className={css.main}>
-      <h1>Przepisy na smaczne rzeczy</h1>
-      <Article
-        name={name}
-        ingredients={ingredients}
-        description={description}
-        img={img}
-      />
+      <h1>{title}</h1>
+      <Article selectedRecipe={selectedRecipe} />
     </main>
   );
 }

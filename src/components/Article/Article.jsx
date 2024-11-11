@@ -1,15 +1,10 @@
 import { Recipe } from "../Recipe/Recipe";
 import { Button } from "../Button/Button";
 
-export function Article({ name, ingredients, description, img }) {
+export function Article({ selectedRecipe }) {
   return (
     <article>
-      <Recipe
-        name={name}
-        ingredients={ingredients}
-        description={description}
-        img={img}
-      />
+      <Recipe selectedRecipe={selectedRecipe} />
       <Button onClick={() => alert("Przepis polubiony!")}>Lubię to!</Button>
     </article>
   );

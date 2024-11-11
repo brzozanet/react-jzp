@@ -11,7 +11,7 @@ function App() {
     (recipe) => recipe.id === selectedRecipeId
   );
 
-  const { name, ingredients, description, img } = selectedRecipe;
+  // const { name, ingredients, description, img } = selectedRecipe;
 
   return (
     <div className={css.container}>
@@ -19,12 +19,7 @@ function App() {
         recipes={recipes}
         onSelectRecipe={(id) => setSelectedRecipeId(id)}
       />
-      <Cookbook
-        name={name}
-        ingredients={ingredients}
-        description={description}
-        img={img}
-      />
+      <Cookbook selectedRecipe={selectedRecipe} title={"Książka kucharska"} />
     </div>
   );
 }

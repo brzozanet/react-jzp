@@ -1,10 +1,13 @@
 import { nanoid } from "nanoid";
 import css from "./Recipe.module.css";
 
-export function Recipe({ name, ingredients, description, img }) {
+export function Recipe({
+  selectedRecipe: { name, ingredients, description, img, country, time },
+}) {
   return (
     <>
       <h2>{name}</h2>
+      <h3>Kraj pochodzenia: {country}</h3>
       <img src={img} alt="" className={css.img} />
       <span>Składniki:</span>
       <ul className={css.list}>
@@ -13,6 +16,7 @@ export function Recipe({ name, ingredients, description, img }) {
         ))}
       </ul>
       <p className={css.description}>{description}</p>
+      <p className={css.time}>Czas przygotowania: {time}</p>
     </>
   );
 }
