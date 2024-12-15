@@ -8,14 +8,9 @@ import { Recipe } from "./components/Recipe/Recipe";
 
 function App() {
   const [selectedRecipeId, setSelectedRecipeId] = useState(1);
-
   const selectedRecipe = recipes.find(
     (recipe) => recipe.id === selectedRecipeId
   );
-
-  // const { name, ingredients, description, img } = selectedRecipe;
-  // const { name, ingredients, description, img } = selectedRecipe;
-  // const { name, ingredients, description, img } = selectedRecipe;
 
   return (
     <>
