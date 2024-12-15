@@ -12,6 +12,8 @@ function App() {
   );
 
   // const { name, ingredients, description, img } = selectedRecipe;
+  // const { name, ingredients, description, img } = selectedRecipe;
+  // const { name, ingredients, description, img } = selectedRecipe;
 
   return (
     <div className={css.container}>
