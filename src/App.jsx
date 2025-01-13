@@ -12,26 +12,25 @@ function App() {
   const selectedRecipe = recipes.find(
     (recipe) => recipe.id === selectedRecipeId
   );
-  console.log(selectedRecipe.id);
 
   // const { name, ingredients, description, img } = selectedRecipe;
 
   return (
     <>
       <div className={css.container}>
-        <RecipeContext.Provider value={selectedRecipe}>
+        <RecipeContext value={selectedRecipe}>
           <List
             recipes={recipes}
             onSelectRecipe={(id) => setSelectedRecipeId(id)}
           />
           <Cookbook title={"Książka kucharska"} />
-        </RecipeContext.Provider>
+        </RecipeContext>
       </div>
       <div className={css.promoted}>
-        <RecipeContext.Provider value={recipes[3]}>
+        <RecipeContext value={recipes[3]}>
           <h2>Przepis tygodnia:</h2>
           <Recipe />
-        </RecipeContext.Provider>
+        </RecipeContext>
       </div>
     </>
   );
