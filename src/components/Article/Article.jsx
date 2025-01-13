@@ -1,10 +1,10 @@
 import { Recipe } from "../Recipe/Recipe";
 import { Button } from "../Button/Button";
 
-export function Article({ selectedRecipe }) {
+export function Article() {
   return (
     <article>
-      <Recipe selectedRecipe={selectedRecipe} />
+      <Recipe />
       <Button onClick={() => alert("Przepis polubiony!")}>Lubię to!</Button>
     </article>
   );

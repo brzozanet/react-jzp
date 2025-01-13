@@ -19,7 +19,7 @@ function App() {
         recipes={recipes}
         onSelectRecipe={(id) => setSelectedRecipeId(id)}
       />
-      <Cookbook selectedRecipe={selectedRecipe} title={"Książka kucharska"} />
+      <Cookbook title={"Książka kucharska"} />
     </div>
   );
 }
