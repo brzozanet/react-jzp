@@ -12,8 +12,6 @@ function App() {
     (recipe) => recipe.id === selectedRecipeId
   );
 
-  console.log(selectedRecipe);
-
   // const { name, ingredients, description, img } = selectedRecipe;
 
   return (
