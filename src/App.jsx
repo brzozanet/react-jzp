@@ -4,6 +4,7 @@ import { recipes } from "./data/recipes";
 import { List } from "./components/List/List";
 import { Cookbook } from "./components/Cookbook/Cookbook";
 import { RecipeContext } from "./context/RecipeContext";
+import { Recipe } from "./components/Recipe/Recipe";
 
 function App() {
   const [selectedRecipeId, setSelectedRecipeId] = useState(1);
@@ -16,15 +17,21 @@ function App() {
 
   return (
     <>
-      <RecipeContext.Provider value={selectedRecipe}>
-        <div className={css.container}>
+      <div className={css.container}>
+        <RecipeContext.Provider value={selectedRecipe}>
           <List
             recipes={recipes}
             onSelectRecipe={(id) => setSelectedRecipeId(id)}
           />
           <Cookbook />
-        </div>
-      </RecipeContext.Provider>
+        </RecipeContext.Provider>
+      </div>
+      <div className={css.promoted}>
+        <RecipeContext.Provider value={recipes[3]}>
+          <h2>Przepis tygodnia</h2>
+          <Recipe />
+        </RecipeContext.Provider>
+      </div>
     </>
   );
 }
