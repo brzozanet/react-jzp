@@ -6,6 +6,7 @@ import { Cookbook } from "./components/Cookbook/Cookbook";
 import { RecipeContext } from "./context/RecipeContext";
 import { Recipe } from "./components/Recipe/Recipe";
 import { TopBar } from "./components/TopBar/TopBar";
+import { LoginContext } from "./context/LoginContext";
 
 function App() {
   const [selectedRecipeId, setSelectedRecipeId] = useState(1);
@@ -19,22 +20,24 @@ function App() {
 
   return (
     <>
-      <TopBar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
-      <div className={css.container}>
-        <RecipeContext value={selectedRecipe}>
-          <List
-            recipes={recipes}
-            onSelectRecipe={(id) => setSelectedRecipeId(id)}
-          />
-          <Cookbook isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
-        </RecipeContext>
-      </div>
-      <div className={css.promoted}>
-        <RecipeContext value={recipes[3]}>
-          <h2>Przepis tygodnia</h2>
-          <Recipe />
-        </RecipeContext>
-      </div>
+      <LoginContext value={[isLoggedIn, setIsLoggedIn]}>
+        <TopBar />
+        <div className={css.container}>
+          <RecipeContext value={selectedRecipe}>
+            <List
+              recipes={recipes}
+              onSelectRecipe={(id) => setSelectedRecipeId(id)}
+            />
+            <Cookbook />
+          </RecipeContext>
+        </div>
+        <div className={css.promoted}>
+          <RecipeContext value={recipes[3]}>
+            <h2>Przepis tygodnia</h2>
+            <Recipe />
+          </RecipeContext>
+        </div>
+      </LoginContext>
     </>
   );
 }
