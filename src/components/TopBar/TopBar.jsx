@@ -1,10 +1,7 @@
-import { useState } from "react";
 import { Button } from "../Button/Button";
 import css from "./TopBar.module.css";
 
-export function TopBar() {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
-
+export function TopBar({ isLoggedIn, setIsLoggedIn }) {
   return (
     <div className={css.wrapper}>
       <span className={css.title}>Reactowe przepisy</span>
