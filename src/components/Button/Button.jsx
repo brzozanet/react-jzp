@@ -1,9 +1,9 @@
-import styles from "./Button.module.css";
+import css from "./Button.module.css";
 
 export function Button({ children, onClick }) {
-    return (
-        <button className={styles.button} onClick={onClick}>
-            {children}
-        </button>
-    );
+  return (
+    <button className={css.button} onClick={onClick}>
+      {children}
+    </button>
+  );
 }
