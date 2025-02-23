@@ -3,17 +3,11 @@ import css from "./App.module.css";
 import { Form } from "./components/Form/Form";
 import { TodoItem } from "./components/TodoItem/TodoItem";
 import { getSubheading } from "./utils/getSubheading";
-import { nanoid } from "nanoid";
+import { todosDatabase } from "./database/todos";
 
 function App() {
   const [isFormShown, setIsFormShown] = useState(false);
-  const [todos, setTodos] = useState([
-    { name: "Skończyć kurs React", done: false, id: nanoid() },
-    { name: "Wrócić do proramowania", done: true, id: nanoid() },
-    { name: "Odświeżyć znajomośc Node", done: false, id: nanoid() },
-    { name: "Rozpoznać projekt Kapusta", done: false, id: nanoid() },
-    { name: "Zrobic portfolio www", done: false, id: nanoid() },
-  ]);
+  const [todos, setTodos] = useState(todosDatabase);
 
   function addItem(newTodoName) {
     setTodos((prevTodos) => [
