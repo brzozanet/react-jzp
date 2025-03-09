@@ -3,7 +3,7 @@ import css from "./App.module.css";
 import { Form } from "./components/Form/Form";
 import { TodoItem } from "./components/TodoItem/TodoItem";
 import { getSubheading } from "./utils/getSubheading";
-import { todos } from "./database/todos";
+import { todosDatabase } from "./database/todos";
 import { nanoid } from "nanoid";
 
 const todosReducer = (state, action) => {
@@ -36,9 +36,7 @@ const todosReducer = (state, action) => {
 
 function App() {
   const [isFormShown, setIsFormShown] = useState(false);
-  const [state, dispatch] = useReducer(todosReducer, todos);
-
-  console.log(state);
+  const [todos, dispatch] = useReducer(todosReducer, todosDatabase);
 
   // function addItem(newTodoName) {
   //   setTodos((prevTodos) => [
