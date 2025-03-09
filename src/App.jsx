@@ -9,36 +9,49 @@ import { nanoid } from "nanoid";
 const todosReducer = (state, action) => {
   switch (action.type) {
     case "add":
-      return [
+      return {
         ...state,
-        {
-          name: action.newTodoName,
-          done: false,
-          id: nanoid(),
-        },
-      ];
+        todos: [
+          ...state.todos,
+          {
+            name: action.newTodoName,
+            done: false,
+            id: nanoid(),
+          },
+        ],
+      };
 
     case "delete":
-      return state.filter((todo) => todo.id !== action.id);
+      return {
+        ...state,
+        todos: state.todos.filter((todo) => todo.id !== action.id),
+      };
 
     case "finish":
-      return state.map((todo) => {
-        if (todo.id !== action.id) {
-          return todo;
-        }
-        return {
-          ...todo,
-          done: true,
-        };
-      });
+      return {
+        ...state,
+        todos: state.todos.map((todo) => {
+          if (todo.id !== action.id) {
+            return todo;
+          }
+          return {
+            ...todo,
+            done: true,
+          };
+        }),
+      };
   }
 };
 
 function App() {
   const [isFormShown, setIsFormShown] = useState(false);
-  const [state, dispatch] = useReducer(todosReducer, todos);
+  const [state, dispatch] = useReducer(todosReducer, {
+    todos,
+    isFormShown: false,
+  });
 
   console.log(state);
+  console.log(state.todos);
 
   function addItem(newTodoName) {
     dispatch({ type: "add", newTodoName });
@@ -53,7 +66,7 @@ function App() {
     dispatch({ type: "finish", id });
   }
 
-  const existingItems = state.filter((todo) => todo.done === false);
+  const existingItems = state.todos.filter((todo) => todo.done === false);
 
   return (
     <div className={css.container}>
@@ -72,7 +85,7 @@ function App() {
         <Form onFormSubmit={(newTodoName) => addItem(newTodoName)} />
       )}
       <ul>
-        {state.map(({ id, name, done }) => (
+        {state.todos.map(({ id, name, done }) => (
           <TodoItem
             key={id}
             name={name}
