@@ -40,5 +40,8 @@ export const appReducer = (state, action) => {
         ...state,
         isFormShown: true,
       };
+
+    default:
+      throw new Error("Action not supperted");
   }
 };
