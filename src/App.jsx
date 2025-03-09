@@ -1,56 +1,13 @@
-import { useReducer, useState } from "react";
+import { useReducer } from "react";
 import css from "./App.module.css";
 import { Form } from "./components/Form/Form";
 import { TodoItem } from "./components/TodoItem/TodoItem";
 import { getSubheading } from "./utils/getSubheading";
 import { todos } from "./database/todos";
-import { nanoid } from "nanoid";
-
-const todosReducer = (state, action) => {
-  switch (action.type) {
-    case "add":
-      return {
-        isFormShown: false,
-        todos: [
-          ...state.todos,
-          {
-            name: action.newTodoName,
-            done: false,
-            id: nanoid(),
-          },
-        ],
-      };
-
-    case "delete":
-      return {
-        ...state,
-        todos: state.todos.filter((todo) => todo.id !== action.id),
-      };
-
-    case "finish":
-      return {
-        ...state,
-        todos: state.todos.map((todo) => {
-          if (todo.id !== action.id) {
-            return todo;
-          }
-          return {
-            ...todo,
-            done: true,
-          };
-        }),
-      };
-
-    case "toggle":
-      return {
-        ...state,
-        isFormShown: true,
-      };
-  }
-};
+import { appReducer } from "./reducers/appReducer";
 
 function App() {
-  const [state, dispatch] = useReducer(todosReducer, {
+  const [state, dispatch] = useReducer(appReducer, {
     todos,
     isFormShown: false,
   });
