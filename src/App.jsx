@@ -38,24 +38,29 @@ function App() {
   const [isFormShown, setIsFormShown] = useState(false);
   const [state, dispatch] = useReducer(todosReducer, todos);
 
-  // function addItem(newTodoName) {
-  //   setTodos((prevTodos) => [
-  //     ...prevTodos,
-  //     {
-  //       name: newTodoName,
-  //       done: false,
-  //       id: nanoid(),
-  //     },
-  //   ]);
-  //   setIsFormShown(false);
-  // }
+  console.log(state);
+
+  function addItem(newTodoName) {
+    dispatch({ type: "add", newTodoName });
+    setIsFormShown(false);
+  }
+
+  function deleteItem(id) {
+    dispatch({ type: "delete", id });
+  }
+
+  function finishItem(id) {
+    dispatch({ type: "finish", id });
+  }
+
+  const existingItems = state.filter((todo) => todo.done === false);
 
   return (
     <div className={css.container}>
       <header className={css.header}>
         <div>
           <h1>Do zrobienia</h1>
-          <h2>{getSubheading(todos.length)}</h2>
+          <h2>{getSubheading(existingItems.length)}</h2>
         </div>
         {!isFormShown && (
           <button onClick={() => setIsFormShown(true)} className={css.button}>
@@ -64,9 +69,7 @@ function App() {
         )}
       </header>
       {isFormShown && (
-        <Form
-          onFormSubmit={(newTodoName) => dispatch({ type: "add", newTodoName })}
-        />
+        <Form onFormSubmit={(newTodoName) => addItem(newTodoName)} />
       )}
       <ul>
         {state.map(({ id, name, done }) => (
@@ -74,8 +77,8 @@ function App() {
             key={id}
             name={name}
             done={done}
-            onDeleteButtonClick={() => dispatch({ type: "delete", id })}
-            onDoneButtonClick={() => dispatch({ type: "finish", id })}
+            onDeleteButtonClick={() => deleteItem(id)}
+            onDoneButtonClick={() => finishItem(id)}
           />
         ))}
       </ul>
