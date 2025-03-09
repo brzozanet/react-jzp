@@ -6,16 +6,26 @@ import { getSubheading } from "./utils/getSubheading";
 import { todosDatabase } from "./database/todos";
 import { nanoid } from "nanoid";
 
-const todosReducer = (state, data) => {
-  return state.filter((todo) => todo.id !== data);
+const todosReducer = (state, action) => {
+  switch (action.type) {
+    case "delete":
+      return state.filter((todo) => todo.id !== action.id);
+    case "done":
+      return state.map((todo) => {
+        if (todo.id !== action.id) {
+          return todo;
+        }
 
-  return state;
+        return {
+          ...todo,
+          done: true,
+        };
+      });
+  }
 };
 
 function App() {
   const [isFormShown, setIsFormShown] = useState(false);
-  // const [, setTodos] = useState(todosDatabase);
-
   const [todos, dispatch] = useReducer(todosReducer, todosDatabase);
 
   function addItem(newTodoName) {
@@ -28,25 +38,6 @@ function App() {
       },
     ]);
     setIsFormShown(false);
-  }
-
-  function deleteItem(id) {
-    dispatch(id);
-  }
-
-  function finishItem(id) {
-    setTodos((prevTodos) =>
-      prevTodos.map((todo) => {
-        if (todo.id !== id) {
-          return todo;
-        }
-
-        return {
-          ...todo,
-          done: true,
-        };
-      })
-    );
   }
 
   return (
@@ -71,9 +62,8 @@ function App() {
             key={id}
             name={name}
             done={done}
-            onDeleteButtonClick={() => deleteItem(id)}
-            // onDeleteButtonClick={() => dispatch({ type: "delete" }, id)}
-            onDoneButtonClick={() => finishItem(id)}
+            onDeleteButtonClick={() => dispatch({ type: "delete", id })}
+            onDoneButtonClick={() => dispatch({ type: "done", id })}
           />
         ))}
       </ul>
