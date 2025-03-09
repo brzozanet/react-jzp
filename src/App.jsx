@@ -10,7 +10,7 @@ const todosReducer = (state, action) => {
   switch (action.type) {
     case "add":
       return {
-        ...state,
+        isFormShown: false,
         todos: [
           ...state.todos,
           {
@@ -40,22 +40,23 @@ const todosReducer = (state, action) => {
           };
         }),
       };
+
+    case "toggle":
+      return {
+        ...state,
+        isFormShown: true,
+      };
   }
 };
 
 function App() {
-  const [isFormShown, setIsFormShown] = useState(false);
   const [state, dispatch] = useReducer(todosReducer, {
     todos,
     isFormShown: false,
   });
 
-  console.log(state);
-  console.log(state.todos);
-
   function addItem(newTodoName) {
     dispatch({ type: "add", newTodoName });
-    setIsFormShown(false);
   }
 
   function deleteItem(id) {
@@ -64,6 +65,10 @@ function App() {
 
   function finishItem(id) {
     dispatch({ type: "finish", id });
+  }
+
+  function toggleFormShow() {
+    dispatch({ type: "toggle" });
   }
 
   const existingItems = state.todos.filter((todo) => todo.done === false);
@@ -75,13 +80,13 @@ function App() {
           <h1>Do zrobienia</h1>
           <h2>{getSubheading(existingItems.length)}</h2>
         </div>
-        {!isFormShown && (
-          <button onClick={() => setIsFormShown(true)} className={css.button}>
+        {!state.isFormShown && (
+          <button onClick={() => toggleFormShow()} className={css.button}>
             +
           </button>
         )}
       </header>
-      {isFormShown && (
+      {state.isFormShown && (
         <Form onFormSubmit={(newTodoName) => addItem(newTodoName)} />
       )}
       <ul>
