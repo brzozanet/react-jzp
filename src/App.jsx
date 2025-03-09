@@ -8,8 +8,19 @@ import { nanoid } from "nanoid";
 
 const todosReducer = (state, action) => {
   switch (action.type) {
+    case "add":
+      return [
+        ...state,
+        {
+          name: action.newTodoName,
+          done: false,
+          id: nanoid(),
+        },
+      ];
+
     case "delete":
       return state.filter((todo) => todo.id !== action.id);
+
     case "finish":
       return state.map((todo) => {
         if (todo.id !== action.id) {
@@ -27,17 +38,17 @@ function App() {
   const [isFormShown, setIsFormShown] = useState(false);
   const [todos, dispatch] = useReducer(todosReducer, todosDatabase);
 
-  function addItem(newTodoName) {
-    setTodos((prevTodos) => [
-      ...prevTodos,
-      {
-        name: newTodoName,
-        done: false,
-        id: nanoid(),
-      },
-    ]);
-    setIsFormShown(false);
-  }
+  // function addItem(newTodoName) {
+  //   setTodos((prevTodos) => [
+  //     ...prevTodos,
+  //     {
+  //       name: newTodoName,
+  //       done: false,
+  //       id: nanoid(),
+  //     },
+  //   ]);
+  //   setIsFormShown(false);
+  // }
 
   return (
     <div className={css.container}>
@@ -53,7 +64,9 @@ function App() {
         )}
       </header>
       {isFormShown && (
-        <Form onFormSubmit={(newTodoName) => addItem(newTodoName)} />
+        <Form
+          onFormSubmit={(newTodoName) => dispatch({ type: "add", newTodoName })}
+        />
       )}
       <ul>
         {todos.map(({ id, name, done }) => (
