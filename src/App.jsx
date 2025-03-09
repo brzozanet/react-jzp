@@ -4,6 +4,7 @@ import { Form } from "./components/Form/Form";
 import { TodoItem } from "./components/TodoItem/TodoItem";
 import { getSubheading } from "./utils/getSubheading";
 import { todosDatabase } from "./database/todos";
+import { nanoid } from "nanoid";
 
 function App() {
   const [isFormShown, setIsFormShown] = useState(false);
@@ -15,7 +16,7 @@ function App() {
       {
         name: newTodoName,
         done: false,
-        id: Math.random(),
+        id: nanoid(),
       },
     ]);
     setIsFormShown(false);
