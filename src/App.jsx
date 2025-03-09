@@ -10,7 +10,7 @@ const todosReducer = (state, action) => {
   switch (action.type) {
     case "delete":
       return state.filter((todo) => todo.id !== action.id);
-    case "done":
+    case "finish":
       return state.map((todo) => {
         if (todo.id !== action.id) {
           return todo;
@@ -63,7 +63,7 @@ function App() {
             name={name}
             done={done}
             onDeleteButtonClick={() => dispatch({ type: "delete", id })}
-            onDoneButtonClick={() => dispatch({ type: "done", id })}
+            onDoneButtonClick={() => dispatch({ type: "finish", id })}
           />
         ))}
       </ul>
