@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useReducer, useState } from "react";
 import css from "./App.module.css";
 import { Form } from "./components/Form/Form";
 import { TodoItem } from "./components/TodoItem/TodoItem";
@@ -6,9 +6,17 @@ import { getSubheading } from "./utils/getSubheading";
 import { todosDatabase } from "./database/todos";
 import { nanoid } from "nanoid";
 
+const todosReducer = (state, data) => {
+  return state.filter((todo) => todo.id !== data);
+
+  return state;
+};
+
 function App() {
   const [isFormShown, setIsFormShown] = useState(false);
-  const [todos, setTodos] = useState(todosDatabase);
+  // const [, setTodos] = useState(todosDatabase);
+
+  const [todos, dispatch] = useReducer(todosReducer, todosDatabase);
 
   function addItem(newTodoName) {
     setTodos((prevTodos) => [
@@ -23,7 +31,7 @@ function App() {
   }
 
   function deleteItem(id) {
-    setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
+    dispatch(id);
   }
 
   function finishItem(id) {
@@ -64,6 +72,7 @@ function App() {
             name={name}
             done={done}
             onDeleteButtonClick={() => deleteItem(id)}
+            // onDeleteButtonClick={() => dispatch({ type: "delete" }, id)}
             onDoneButtonClick={() => finishItem(id)}
           />
         ))}
