@@ -15,7 +15,6 @@ const todosReducer = (state, action) => {
         if (todo.id !== action.id) {
           return todo;
         }
-
         return {
           ...todo,
           done: true,
