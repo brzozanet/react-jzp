@@ -32,7 +32,7 @@ export const useGetData = (url) => {
     return () => {
       isCancelled = true;
     };
-  }, []);
+  }, [url]); // NOTE: do wyjaśnienia w teorii
 
   return { data, error };
 };
