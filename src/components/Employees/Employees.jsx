@@ -16,15 +16,16 @@ export function Employees() {
           setError(null);
           return response.json();
         }
-
         throw new Error("Coś poszło nie tak...");
       })
+
       .then((response) => {
         if (isCancelled) {
           return;
         }
         setEmployees(response);
       })
+
       .catch((error) => {
         setError(error);
       });

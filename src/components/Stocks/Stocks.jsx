@@ -16,15 +16,16 @@ export function Stocks() {
           setError(null);
           return response.json();
         }
-
         throw new Error("Coś poszło nie tak...");
       })
+
       .then((response) => {
         if (isCancelled) {
           return;
         }
         setStocks(response);
       })
+
       .catch((error) => {
         setError(error);
       });

@@ -16,15 +16,16 @@ export function Results() {
           setError(null);
           return response.json();
         }
-
         throw new Error("Coś poszło nie tak...");
       })
+
       .then((response) => {
         if (isCancelled) {
           return;
         }
         setResults(response);
       })
+
       .catch((error) => {
         setError(error);
       });
