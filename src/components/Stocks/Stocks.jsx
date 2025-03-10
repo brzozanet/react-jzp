@@ -1,63 +1,59 @@
 import { useEffect, useState } from "react";
-import styles from "./Stocks.module.css";
+import css from "./Stocks.module.css";
+
+const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 export function Stocks() {
-    const [stocks, setStocks] = useState([]);
-    const [error, setError] = useState(null);
+  const [stocks, setStocks] = useState([]);
+  const [error, setError] = useState(null);
 
-    useEffect(() => {
-        let isCancelled = false;
+  useEffect(() => {
+    let isCancelled = false;
 
-        fetch("/stocks.json")
-            .then((res) => {
-                if (res.ok) {
-                    setError(null);
-                    return res.json();
-                }
+    fetch(`${BASE_URL}/stocks.json`)
+      .then((response) => {
+        if (response.ok) {
+          setError(null);
+          return response.json();
+        }
 
-                throw new Error("Coś poszło nie tak...");
-            })
-            .then((res) => {
-                if (isCancelled) {
-                    return;
-                }
-                setStocks(res);
-            })
-            .catch((e) => {
-                setError(e);
-            });
+        throw new Error("Coś poszło nie tak...");
+      })
+      .then((response) => {
+        if (isCancelled) {
+          return;
+        }
+        setStocks(response);
+      })
+      .catch((error) => {
+        setError(error);
+      });
 
-        return () => {
-            isCancelled = true;
-        };
-    }, []);
+    return () => {
+      isCancelled = true;
+    };
+  }, []);
 
-    return (
-        <section className={styles.section}>
-            {error ? (
-                <span className={styles.error}>{error.message}</span>
-            ) : (
-                <ul className={styles.list}>
-                    {stocks.map((stock) => (
-                        <li key={stock.company_name} className={styles.item}>
-                            <div className={styles.wrapper}>
-                                <span className={styles.logo}>
-                                    {stock.company_name[0]}
-                                </span>
-                                <strong className={styles.fullName}>
-                                    {stock.stock_short_name}
-                                </strong>
-                                <span className={styles.shortName}>
-                                    {stock.company_name}
-                                </span>
-                                <span className={styles.price}>
-                                    Price: {stock.market_price}
-                                </span>
-                            </div>
-                        </li>
-                    ))}
-                </ul>
-            )}
-        </section>
-    );
+  return (
+    <section className={css.section}>
+      {error ? (
+        <span className={css.error}>{error.message}</span>
+      ) : (
+        <ul className={css.list}>
+          {stocks.map((stock) => (
+            <li key={stock.company_name} className={css.item}>
+              <div className={css.wrapper}>
+                <span className={css.logo}>{stock.company_name[0]}</span>
+                <strong className={css.fullName}>
+                  {stock.stock_short_name}
+                </strong>
+                <span className={css.shortName}>{stock.company_name}</span>
+                <span className={css.price}>Price: {stock.market_price}</span>
+              </div>
+            </li>
+          ))}
+        </ul>
+      )}
+    </section>
+  );
 }
