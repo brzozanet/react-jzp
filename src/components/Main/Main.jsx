@@ -1,7 +1,7 @@
 import { Section } from "../Section/Section";
 import "./Main.css";
 
-export function Main() {
+export function Main({ setIsModalShown }) {
   return (
     <main>
       <p>
@@ -9,7 +9,7 @@ export function Main() {
         modal. Po kliknięciu na przycisk znajdujący się po prawej stronie, na
         ekranie powinien pojawić się modal potwierdzający wykonanie akcji.
       </p>
-      <Section />
+      <Section setIsModalShown={setIsModalShown} />
     </main>
   );
 }
