@@ -1,18 +1,20 @@
-import { useContext, useState } from "react";
+import "./App.css";
 import { Main } from "./components/Main/Main";
 import { Modal } from "./components/Modal/Modal";
-import "./App.css";
 import { ModalShownContext } from "./context/ModalShownContext";
+import { useState } from "react";
 
 function App() {
-  const isModalShown = useContext(ModalShownContext);
+  const [isModalShown, setIsModalShown] = useState(false);
 
   return (
     <>
-      <h1>Witaj w lekcji o React Portal!</h1>
-      <Main />
-      <footer>zrozumiecReact.pl ©</footer>
-      {isModalShown && <Modal />}
+      <ModalShownContext value={[isModalShown, setIsModalShown]}>
+        <h1>Witaj w lekcji o React Portal!</h1>
+        <Main />
+        <footer>zrozumiecReact.pl ©</footer>
+        {isModalShown && <Modal />}
+      </ModalShownContext>
     </>
   );
 }

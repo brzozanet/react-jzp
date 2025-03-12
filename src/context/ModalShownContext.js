@@ -1,3 +1,3 @@
 import { createContext } from "react";
 
-export const ModalShownContext = createContext(false);
+export const ModalShownContext = createContext(null);

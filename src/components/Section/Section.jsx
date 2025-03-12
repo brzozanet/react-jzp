@@ -1,8 +1,13 @@
 import "./Section.css";
+import { useContext } from "react";
+import { ModalShownContext } from "../../context/ModalShownContext";
 
 export function Section() {
+  const [, setIsModalShown] = useContext(ModalShownContext);
+
   const handleButtonModalOpenClick = () => {
-    console.log("click");
+    console.log("click open");
+    setIsModalShown(true);
   };
 
   return (
