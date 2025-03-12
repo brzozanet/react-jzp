@@ -1,9 +1,8 @@
 import "./Section.css";
 
-export function Section({ setIsModalShown }) {
+export function Section() {
   const handleButtonModalOpenClick = () => {
     console.log("click");
-    setIsModalShown(true);
   };
 
   return (
