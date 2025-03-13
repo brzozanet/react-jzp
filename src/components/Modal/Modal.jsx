@@ -7,9 +7,11 @@ export function Modal({ setIsModalShown }) {
   };
 
   return (
-    <div className="modal">
-      <span>Sukces! 🎉</span>
-      <button onClick={() => handleModalCloseClick()}>Zamknij</button>
-    </div>
+    <>
+      <div className="modal">
+        <span>Sukces! 🎉</span>
+        <button onClick={() => handleModalCloseClick()}>Zamknij</button>
+      </div>
+    </>
   );
 }
