@@ -1,10 +1,14 @@
 import "./Modal.css";
 
-export function Modal({ onClose }) {
+export function Modal({ setIsModalShown }) {
+  const handleModalCloseClick = () => {
+    console.log("click close");
+    setIsModalShown(false);
+  };
   return (
     <div className="modal">
       <span>Sukces! 🎉</span>
-      <button onClick={onClose}>Zamknij</button>
+      <button onClick={() => handleModalCloseClick()}>Zamknij</button>
     </div>
   );
 }
