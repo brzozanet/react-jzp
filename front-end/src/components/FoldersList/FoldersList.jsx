@@ -1,8 +1,8 @@
 import css from "./FoldersList.module.css";
 import { useState } from "react";
 import { Folder } from "../folder/Folder";
-import { Title } from "../title/Title";
-import { TopBar } from "../top-bar/TopBar";
+import { Title } from "../Title/Title";
+import { TopBar } from "../TopBar/TopBar";
 import { AddNewButton } from "../add-new-button/AddNewButton";
 
 const Folders = ({ children }) => (

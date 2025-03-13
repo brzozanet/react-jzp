@@ -1,6 +1,6 @@
 import css from "./Note.module.css";
 import RemoveIcon from "../../assets/remove.svg";
-import { TopBar } from "../top-bar/TopBar";
+import { TopBar } from "../TopBar/TopBar";
 
 const NoteEditor = ({ children }) => (
   <div className={css["note-editor"]}>{children}</div>

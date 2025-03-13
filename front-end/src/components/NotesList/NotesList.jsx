@@ -1,9 +1,9 @@
 import css from "./NotesList.module.css";
 import { useState } from "react";
-import { Title } from "../title/Title";
+import { Title } from "../Title/Title";
 import { AddNewButton } from "../add-new-button/AddNewButton";
-import { TopBar } from "../top-bar/TopBar";
-import { ShortNote } from "../short-note/ShortNote";
+import { TopBar } from "../TopBar/TopBar";
+import { ShortNote } from "../ShortNote/ShortNote";
 import { Note } from "../note/Note";
 
 const NotesContainer = ({ children }) => (
