@@ -1,10 +1,6 @@
-import { useContext } from "react";
-import { ModalShownContext } from "../../context/ModalShownContext";
 import "./Modal.css";
 
-export function Modal() {
-  const [, setIsModalShown] = useContext(ModalShownContext);
-
+export function Modal({ setIsModalShown }) {
   const handleModalCloseClick = () => {
     console.log("click close");
     setIsModalShown(false);
