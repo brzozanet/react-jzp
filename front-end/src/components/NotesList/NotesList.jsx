@@ -1,10 +1,11 @@
 import css from "./NotesList.module.css";
 import { useState } from "react";
 import { Title } from "../Title/Title";
-import { AddNewButton } from "../add-new-button/AddNewButton";
+import { AddNewButton } from "../AddNewButton/AddNewButton";
 import { TopBar } from "../TopBar/TopBar";
 import { ShortNote } from "../ShortNote/ShortNote";
-import { Note } from "../note/Note";
+import { Note } from "../Note/Note";
+import { useParams } from "react-router-dom";
 
 const NotesContainer = ({ children }) => (
   <div className={css["notes-container"]}>{children}</div>
@@ -56,6 +57,8 @@ export function NotesList() {
     },
   ]);
 
+  const { folderId } = useParams();
+
   return (
     <>
       <NotesContainer>
@@ -64,9 +67,11 @@ export function NotesList() {
             <Title>Notatki</Title>
             <AddNewButton>+</AddNewButton>
           </TopBar>
-          {notes.map((note, idx) => (
-            <ShortNote role="listitem" key={idx} note={note}></ShortNote>
-          ))}
+          {notes
+            .filter((note) => note.folderId === Number(folderId))
+            .map((note, index) => (
+              <ShortNote role="listitem" key={index} note={note}></ShortNote>
+            ))}
         </Notes>
         <Note />
       </NotesContainer>
