@@ -1,5 +1,5 @@
-import "./Main.css";
 import { Section } from "../Section/Section";
+import "./Main.css";
 
 export function Main() {
   return (
