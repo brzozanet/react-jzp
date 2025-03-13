@@ -1,14 +1,16 @@
-import styles from "./Loader.module.css";
+import css from "./Loader.module.css";
 
 export function Loader() {
-    return (
-        <div className={styles.loader}>
-            <div className={styles["lds-ring"]}>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
+  return (
+    <>
+      <div className={css.loader}>
+        <div className={css["lds-ring"]}>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
         </div>
-    );
+      </div>
+    </>
+  );
 }

@@ -1,14 +1,12 @@
-import styles from "./ShortNote.module.css";
+import css from "./ShortNote.module.css";
 
 export function ShortNote({ note, active }) {
-    return (
-        <div
-            className={[styles["short-note"], active ? styles.active : ""].join(
-                " "
-            )}
-        >
-            <div className={styles.title}>{note.title}</div>
-            <div className={styles.body}>{note.body}</div>
-        </div>
-    );
+  return (
+    <>
+      <div className={[css["short-note"], active ? css.active : ""].join(" ")}>
+        <div className={css.title}>{note.title}</div>
+        <div className={css.body}>{note.body}</div>
+      </div>
+    </>
+  );
 }

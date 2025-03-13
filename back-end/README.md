@@ -3,7 +3,7 @@ Ten folder zawiera prosty serwer, dzięki któremu będziemy mogli odczytać lis
 Żeby uruchomić server wywołaj w terminalu na poziomie folderu `back-end` komendy:
 
 ```command
-npm i
+npm install
 npm run dev
 ```
 
@@ -36,15 +36,15 @@ Elementy zwracane i zapisywane do serwera mają następujące pola:
 
 ### Opis endpointów
 
-| Ścieżka             | Metoda   | Jak działa?                                                                                                                    |
-| ------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------              |
-| /folders            | `GET`    | Pobiera wszystkie foldery                                                                                                      |
-| /folders            | `POST`   | Dodaje nowy folder. Wymagania przesłania body z danymi nowego folderu, np: `{name: 'Nowy folder'}`                             |
-| /notes?folderId=XYZ | `GET`    | Pobiera notatki z folderu o ID `XYZ`                                                                                                        |
-| /notes              | `POST`   | Dodaje nową notatkę. Wymagania przesłania body z danymi nowej notatki, np: `{title: 'Nowa notatka', body: 'Treść notatki', folderId: 1}`    |
-| /notes/XYZ          | `GET`    | Pobiera notatkę o ID XYZ.                                                                                                      |
-| /notes/XYZ          | `PATCH`  | Aktualizuje notatkę o ID `XYZ`. Wymagania przesłania body nowymi danymi notatki np: `{title: 'Nowy tytuł', body: 'Nowa treść'}` |
-| /notes/XYZ          | `DELETE` | Kasuje notatkę o ID `XYZ`                                                                                                      |**
+| Ścieżka             | Metoda   | Jak działa?                                                                                                                              |
+| ------------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ---- |
+| /folders            | `GET`    | Pobiera wszystkie foldery                                                                                                                |
+| /folders            | `POST`   | Dodaje nowy folder. Wymagania przesłania body z danymi nowego folderu, np: `{name: 'Nowy folder'}`                                       |
+| /notes?folderId=XYZ | `GET`    | Pobiera notatki z folderu o ID `XYZ`                                                                                                     |
+| /notes              | `POST`   | Dodaje nową notatkę. Wymagania przesłania body z danymi nowej notatki, np: `{title: 'Nowa notatka', body: 'Treść notatki', folderId: 1}` |
+| /notes/XYZ          | `GET`    | Pobiera notatkę o ID XYZ.                                                                                                                |
+| /notes/XYZ          | `PATCH`  | Aktualizuje notatkę o ID `XYZ`. Wymagania przesłania body nowymi danymi notatki np: `{title: 'Nowy tytuł', body: 'Nowa treść'}`          |
+| /notes/XYZ          | `DELETE` | Kasuje notatkę o ID `XYZ`                                                                                                                | \*\* |
 
 ### Przykłady użycia
 
@@ -63,14 +63,14 @@ Konsola:
 
 ```javascript
 [
-    {
-        id: 1,
-        name: "Folder nr. 1",
-    },
-    {
-        id: 2,
-        name: "Folder nr. 2",
-    },
+  {
+    id: 1,
+    name: "Folder nr. 1",
+  },
+  {
+    id: 2,
+    name: "Folder nr. 2",
+  },
 ];
 ```
 
@@ -82,24 +82,24 @@ Wywołanie:
 
 ```javascript
 fetch("http://localhost:3000/folders", {
-    method: "POST",
-    headers: {
-        "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ name: "Nowy folder" }),
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({ name: "Nowy folder" }),
 })
-    .then((res) => res.json())
-    .console.log((res) => res.json());
+  .then((res) => res.json())
+  .console.log((res) => res.json());
 ```
 
 Konsola:
 
 ```javascript
 [
-    {
-        id: 1,
-        name: "Nowy folder",
-    },
+  {
+    id: 1,
+    name: "Nowy folder",
+  },
 ];
 ```
 
@@ -120,16 +120,16 @@ Konsola:
 
 ```javascript
 [
-    {
-        id: 1,
-        title: "Tytuł notatki nr. 1",
-        body: "Treść notatki nr. 1",
-    },
-    {
-        id: 2,
-        title: "Tytuł notatki nr. 2",
-        body: "Treść notatki nr. 2",
-    },
+  {
+    id: 1,
+    title: "Tytuł notatki nr. 1",
+    body: "Treść notatki nr. 1",
+  },
+  {
+    id: 2,
+    title: "Tytuł notatki nr. 2",
+    body: "Treść notatki nr. 2",
+  },
 ];
 ```
 
@@ -142,17 +142,17 @@ Wywołanie:
 
 ```javascript
 fetch("http://localhost:3000/notes", {
-    method: "POST",
-    headers: {
-        "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-        title: "Tytuł nowej notatki",
-        body: "Treść nowej notatki",
-    }),
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({
+    title: "Tytuł nowej notatki",
+    body: "Treść nowej notatki",
+  }),
 })
-    .then((res) => res.json())
-    .console.log((res) => res.json());
+  .then((res) => res.json())
+  .console.log((res) => res.json());
 ```
 
 Konsola:
@@ -173,8 +173,8 @@ Wywołanie:
 
 ```javascript
 fetch("http://localhost:3000/notes/1")
-    .then((res) => res.json())
-    .console.log((res) => res.json());
+  .then((res) => res.json())
+  .console.log((res) => res.json());
 ```
 
 Konsola:
@@ -196,17 +196,17 @@ Wywołanie:
 
 ```javascript
 fetch("http://localhost:3000/notes/1", {
-    method: "PATCH",
-    headers: {
-        "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-        title: "Zaktualizowany tytuł",
-        body: "Zaktualizowana treść",
-    }),
+  method: "PATCH",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({
+    title: "Zaktualizowany tytuł",
+    body: "Zaktualizowana treść",
+  }),
 })
-    .then((res) => res.json())
-    .console.log((res) => res.json());
+  .then((res) => res.json())
+  .console.log((res) => res.json());
 ```
 
 Konsola:

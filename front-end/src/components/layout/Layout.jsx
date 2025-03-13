@@ -1,4 +1,8 @@
-import style from "./Layout.module.css";
+import css from "./Layout.module.css";
 export function Layout({ children }) {
-    return <div className={style["flex-container"]}>{children}</div>;
+  return (
+    <>
+      <div className={css["flex-container"]}>{children}</div>
+    </>
+  );
 }
