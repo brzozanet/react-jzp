@@ -5,6 +5,7 @@ export function Modal({ setIsModalShown }) {
     console.log("click close");
     setIsModalShown(false);
   };
+
   return (
     <div className="modal">
       <span>Sukces! 🎉</span>
