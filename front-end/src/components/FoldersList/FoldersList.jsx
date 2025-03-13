@@ -1,9 +1,9 @@
 import css from "./FoldersList.module.css";
 import { useState } from "react";
-import { Folder } from "../folder/Folder";
+import { Folder } from "../Folder/Folder";
 import { Title } from "../Title/Title";
 import { TopBar } from "../TopBar/TopBar";
-import { AddNewButton } from "../add-new-button/AddNewButton";
+import { AddNewButton } from "../AddNewButton/AddNewButton";
 
 const Folders = ({ children }) => (
   <div className={css["folders-column"]}>{children}</div>

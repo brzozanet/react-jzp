@@ -1,8 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { App } from "../src/App";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <>
-    <h1>Zrozumieć React! Moduł React Router</h1>
+    <h1>Hello React!</h1>
   </>
 );

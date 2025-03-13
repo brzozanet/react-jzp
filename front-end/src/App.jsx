@@ -1,5 +1,5 @@
-import { FoldersList } from "./components/folders-list/FoldersList";
-import { Layout } from "./components/layout/Layout";
+import { FoldersList } from "./components/FoldersList/FoldersList";
+import { Layout } from "./components/Layout/Layout";
 
 export function App() {
   return (
