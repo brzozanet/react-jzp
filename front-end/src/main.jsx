@@ -8,10 +8,12 @@ const router = createBrowserRouter([
   {
     element: <App />,
     path: "/",
-  },
-  {
-    element: <NotesList />,
-    path: "/notes/:folderId",
+    children: [
+      {
+        element: <NotesList />,
+        path: "/notes/:folderId",
+      },
+    ],
   },
 ]);
 
