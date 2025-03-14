@@ -29,14 +29,15 @@ export function FoldersList() {
         }
         throw new Error("Bład podczas pobierania danych folderów");
       })
+
       .then((response) => {
         setTimeout(() => {
           // NOTE: loading simulation
           setIsLoading(false);
         }, 1000);
-
         return getFolders(response);
       })
+
       .catch((error) => {
         console.error(error.message);
       });

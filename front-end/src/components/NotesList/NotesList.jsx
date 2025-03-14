@@ -32,6 +32,7 @@ export function NotesList() {
         }
         throw new Error("Błąd podczas pobierania danych notatek");
       })
+
       .then((response) => {
         setTimeout(() => {
           // NOTE: loading simulation
@@ -39,6 +40,7 @@ export function NotesList() {
         }, 1000);
         return setNotes(response);
       })
+
       .catch((error) => {
         console.error(error.message);
       });
