@@ -1,11 +1,13 @@
 import css from "./NotesList.module.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Title } from "../Title/Title";
 import { AddNewButton } from "../AddNewButton/AddNewButton";
 import { TopBar } from "../TopBar/TopBar";
 import { ShortNote } from "../ShortNote/ShortNote";
 import { Note } from "../Note/Note";
+import { Loader } from "../Loader/Loader";
 import { useParams } from "react-router-dom";
+import { nanoid } from "nanoid";
 
 const NotesContainer = ({ children }) => (
   <div className={css["notes-container"]}>{children}</div>
@@ -18,49 +20,33 @@ const Notes = ({ children }) => (
 );
 
 export function NotesList() {
-  const [notes] = useState([
-    {
-      id: 5,
-      folderId: 2,
-      title: "Albert Einstein",
-      body: "Learn from yesterday, live for today, hope for tomorrow. The important thing is not to stop questioning.",
-    },
-    {
-      id: 7,
-      title: "Sun Tzu",
-      folderId: 2,
-      body: "Osiągnąć sto zwycięstw w stu bitwach nie jest szczytem umiejętności. Szczytem umiejętności jest pokonanie przeciwnika bez walki.",
-    },
-    {
-      title: "Nowa notatka",
-      body: "Tutaj wpisz treść swojej notatki alasdasdasdasdlaksjd asd ",
-      folderId: 1,
-      id: 8,
-    },
-    {
-      title: "Nowa notatka",
-      body: "Tutaj wpisz treść swojej notatki",
-      folderId: 1,
-      id: 10,
-    },
-    {
-      title: "Nowa notatkaqq",
-      body: "Tutaj wpisz treść swojej notatki",
-      folderId: 1,
-      id: 15,
-    },
-    {
-      title: "Nowa notatka",
-      body: "Tutaj wpisz treść swojej notatki",
-      folderId: 1,
-      id: 17,
-    },
-  ]);
-
+  const [notes, setNotes] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const { folderId } = useParams();
+
+  useEffect(() => {
+    fetch(`http://localhost:3000/notes?${folderId}`)
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+        throw new Error("Błąd podczas pobierania danych notatek");
+      })
+      .then((response) => {
+        setTimeout(() => {
+          // NOTE: loading simulation
+          setIsLoading(false);
+        }, 1000);
+        return setNotes(response);
+      })
+      .catch((error) => {
+        console.error(error.message);
+      });
+  }, []);
 
   return (
     <>
+      {isLoading && <Loader />}
       <NotesContainer>
         <Notes>
           <TopBar>
@@ -69,8 +55,8 @@ export function NotesList() {
           </TopBar>
           {notes
             .filter((note) => note.folderId === Number(folderId))
-            .map((note, index) => (
-              <ShortNote role="listitem" key={index} note={note}></ShortNote>
+            .map((note) => (
+              <ShortNote role="listitem" key={nanoid()} note={note}></ShortNote>
             ))}
         </Notes>
         <Note />

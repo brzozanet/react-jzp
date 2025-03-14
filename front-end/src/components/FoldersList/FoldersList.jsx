@@ -5,7 +5,6 @@ import { Title } from "../Title/Title";
 import { TopBar } from "../TopBar/TopBar";
 import { AddNewButton } from "../AddNewButton/AddNewButton";
 import { Loader } from "../Loader/Loader";
-import { NotFound } from "../NotFound/NotFound";
 import { nanoid } from "nanoid";
 import { NavLink } from "react-router-dom";
 
@@ -28,7 +27,7 @@ export function FoldersList() {
         if (response.ok) {
           return response.json();
         }
-        throw new Error("Bład podczas pobierania danych");
+        throw new Error("Bład podczas pobierania danych folderów");
       })
       .then((response) => {
         setTimeout(() => {
@@ -40,7 +39,6 @@ export function FoldersList() {
       })
       .catch((error) => {
         console.error(error.message);
-        setIsLoading(false);
       });
   }, []);
 
