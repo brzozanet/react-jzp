@@ -5,6 +5,7 @@ import { Title } from "../Title/Title";
 import { TopBar } from "../TopBar/TopBar";
 import { AddNewButton } from "../AddNewButton/AddNewButton";
 import { nanoid } from "nanoid";
+import { NavLink } from "react-router-dom";
 
 const Folders = ({ children }) => (
   <div className={css["folders-column"]}>{children}</div>
@@ -41,9 +42,14 @@ export function FoldersList() {
         <Title>Foldery</Title>
         <UserCreatedFolders>
           {folders.map((folder) => (
-            <a key={nanoid()} href={`/notes/${folder.id}`}>
-              <Folder>{folder.name}</Folder>
-            </a>
+            <NavLink key={nanoid()} to={`/notes/${folder.id}`}>
+              {({ isActive }) => {
+                return <Folder active={isActive}>{folder.name}</Folder>;
+              }}
+            </NavLink>
+            // <Link key={nanoid()} to={`/notes/${folder.id}`}>
+            //   <Folder>{folder.name}</Folder>
+            // </Link>
           ))}
         </UserCreatedFolders>
         {/* <Folder icon="archive">Archiwum</Folder> */}
