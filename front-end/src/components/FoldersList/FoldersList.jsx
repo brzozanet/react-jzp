@@ -1,9 +1,11 @@
 import css from "./FoldersList.module.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Folder } from "../Folder/Folder";
 import { Title } from "../Title/Title";
 import { TopBar } from "../TopBar/TopBar";
 import { AddNewButton } from "../AddNewButton/AddNewButton";
+import { Loader } from "../Loader/Loader";
+import { NotFound } from "../NotFound/NotFound";
 import { nanoid } from "nanoid";
 import { NavLink } from "react-router-dom";
 
@@ -17,19 +19,34 @@ const UserCreatedFolders = ({ children }) => (
 );
 
 export function FoldersList() {
-  const [folders] = useState([
-    {
-      name: "Listy",
-      id: 1,
-    },
-    {
-      name: "Przemyślenia",
-      id: 2,
-    },
-  ]);
+  const [folders, getFolders] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    fetch("http://localhost:3000/folders")
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+        throw new Error("Bład podczas pobierania danych");
+      })
+      .then((response) => {
+        setTimeout(() => {
+          // NOTE: loading simulation
+          setIsLoading(false);
+        }, 1000);
+
+        return getFolders(response);
+      })
+      .catch((error) => {
+        console.error(error.message);
+        setIsLoading(false);
+      });
+  }, []);
 
   return (
     <>
+      {isLoading && <Loader />}
       <Folders>
         <TopBar>
           <input
