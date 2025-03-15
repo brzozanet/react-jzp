@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { App } from "../src/App";
+import { NotesList } from "./components/NotesList/NotesList";
 
 const router = createBrowserRouter([
   {
@@ -10,6 +11,15 @@ const router = createBrowserRouter([
     loader: () => {
       return fetch("http://localhost:3000/folders");
     },
+    children: [
+      {
+        element: <NotesList />,
+        path: "/notes/:folderId",
+        loader: () => {
+          return [1, 2];
+        },
+      },
+    ],
   },
 ]);
 
