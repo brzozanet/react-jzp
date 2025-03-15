@@ -19,9 +19,9 @@ export function Note() {
             <img className={css.image} src={RemoveIcon} />
           </button>
         </TopBar>
-        <NoteEditor>
-          <input type="text" value={note.title} />
-          <textarea value={note.body} />
+        <NoteEditor key={nanoid()}>
+          <input type="text" defaultValue={note.title} />
+          <textarea defaultValue={note.body} />
         </NoteEditor>
       </div>
     </>
