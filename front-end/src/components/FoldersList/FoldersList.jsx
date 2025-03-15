@@ -25,7 +25,7 @@ export const addFolderForm = async (args) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      name: `${folderName}`,
+      name: folderName,
     }),
   });
 };

@@ -3,7 +3,7 @@ import { Title } from "../Title/Title";
 import { AddNewButton } from "../AddNewButton/AddNewButton";
 import { TopBar } from "../TopBar/TopBar";
 import { ShortNote } from "../ShortNote/ShortNote";
-import { NavLink, Outlet, useLoaderData } from "react-router-dom";
+import { Form, NavLink, Outlet, useLoaderData } from "react-router-dom";
 import { nanoid } from "nanoid";
 
 const NotesContainer = ({ children }) => (
@@ -16,6 +16,10 @@ const Notes = ({ children }) => (
   </div>
 );
 
+export const addNoteForm = () => {
+  console.log("add note");
+};
+
 export function NotesList() {
   const notes = useLoaderData();
   // const { folderId } = useParams();
@@ -26,7 +30,9 @@ export function NotesList() {
         <Notes>
           <TopBar>
             <Title>Notatki</Title>
-            <AddNewButton>+</AddNewButton>
+            <Form method="POST">
+              <AddNewButton>+</AddNewButton>
+            </Form>
           </TopBar>
           {notes
             // .filter((note) => note.folderId === Number(folderId))
