@@ -1,12 +1,15 @@
 import css from "./Note.module.css";
 import RemoveIcon from "../../assets/remove.svg";
 import { TopBar } from "../TopBar/TopBar";
+import { useLoaderData } from "react-router-dom";
 
 const NoteEditor = ({ children }) => (
   <div className={css["note-editor"]}>{children}</div>
 );
 
 export function Note() {
+  const note = useLoaderData();
+
   return (
     <>
       <div className={css.container}>
@@ -16,8 +19,8 @@ export function Note() {
           </button>
         </TopBar>
         <NoteEditor>
-          <input type="text" />
-          <textarea />
+          <input type="text" value={note.title} />
+          <textarea value={note.body} />
         </NoteEditor>
       </div>
     </>

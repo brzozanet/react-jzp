@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { App } from "../src/App";
 import { NotesList } from "./components/NotesList/NotesList";
+import { Note } from "./components/Note/Note";
 
 const router = createBrowserRouter([
   {
@@ -16,11 +17,19 @@ const router = createBrowserRouter([
         element: <NotesList />,
         path: "/notes/:folderId",
         loader: ({ params }) => {
-          console.log(params);
           return fetch(
             `http://localhost:3000/notes?folderId=${params.folderId}`
           );
         },
+        children: [
+          {
+            element: <Note />,
+            path: "/notes/:folderId/note/:noteId",
+            loader: ({ params }) => {
+              return fetch(`http://localhost:3000/notes/${params.noteId}`);
+            },
+          },
+        ],
       },
     ],
   },
