@@ -3,8 +3,6 @@ import { Title } from "../Title/Title";
 import { AddNewButton } from "../AddNewButton/AddNewButton";
 import { TopBar } from "../TopBar/TopBar";
 import { ShortNote } from "../ShortNote/ShortNote";
-import { Note } from "../Note/Note";
-import { nanoid } from "nanoid";
 import { useLoaderData } from "react-router-dom";
 
 const NotesContainer = ({ children }) => (
@@ -32,10 +30,9 @@ export function NotesList() {
           {notes
             // .filter((note) => note.folderId === Number(folderId))
             .map((note) => (
-              <ShortNote role="listitem" key={nanoid()} note={note}></ShortNote>
+              <ShortNote role="listitem" note={note}></ShortNote>
             ))}
         </Notes>
-        <Note />
       </NotesContainer>
     </>
   );

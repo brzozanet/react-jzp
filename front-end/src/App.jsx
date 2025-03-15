@@ -6,7 +6,6 @@ export function App() {
   return (
     <Layout>
       <FoldersList />
-      <Outlet />
     </Layout>
   );
 }
