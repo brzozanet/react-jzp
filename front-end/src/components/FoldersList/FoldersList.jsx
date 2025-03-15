@@ -33,11 +33,7 @@ export function FoldersList() {
         <Title>Foldery</Title>
         <UserCreatedFolders>
           {folders.map((folder) => (
-            <NavLink key={nanoid()} to={`/notes/${folder.id}`}>
-              {({ isActive }) => {
-                return <Folder active={isActive}>{folder.name}</Folder>;
-              }}
-            </NavLink>
+            <Folder key={nanoid()}>{folder.name}</Folder>
             // <Link key={nanoid()} to={`/notes/${folder.id}`}>
             //   <Folder>{folder.name}</Folder>
             // </Link>
