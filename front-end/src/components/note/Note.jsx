@@ -2,7 +2,6 @@ import css from "./Note.module.css";
 import RemoveIcon from "../../assets/remove.svg";
 import { TopBar } from "../TopBar/TopBar";
 import { Form, useLoaderData, useSubmit } from "react-router-dom";
-import { nanoid } from "nanoid";
 
 const NoteEditor = ({ children }) => (
   <div className={css["note-editor"]}>{children}</div>
