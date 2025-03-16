@@ -8,6 +8,23 @@ const NoteEditor = ({ children }) => (
   <div className={css["note-editor"]}>{children}</div>
 );
 
+export const editNoteForm = async (args) => {
+  console.log(args.params.noteId);
+  const formData = await args.request.formData();
+  const noteTitle = formData.get("note-title");
+  const noteBody = formData.get("note-body");
+  return fetch(`http://localhost:3000/notes/${args.params.noteId}`, {
+    method: "PATCH",
+    headers: {
+      "Content-type": "application/json",
+    },
+    body: JSON.stringify({
+      title: noteTitle,
+      body: noteBody,
+    }),
+  });
+};
+
 export function Note() {
   const note = useLoaderData();
 
@@ -20,9 +37,9 @@ export function Note() {
           </button>
         </TopBar>
         <NoteEditor key={nanoid()}>
-          <Form>
-            <input type="text" defaultValue={note.title} />
-            <textarea defaultValue={note.body} />
+          <Form method="PATCH">
+            <input type="text" name="note-title" defaultValue={note.title} />
+            <textarea name="note-body" defaultValue={note.body} />
           </Form>
         </NoteEditor>
       </div>

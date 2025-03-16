@@ -80,7 +80,7 @@
     {
       "id": 19,
       "folderId": 5,
-      "title": "Pomysł na książkę",
+      "title": "Pomysł na książki",
       "body": "Napisać książkę o programowaniu w JavaScript."
     },
     {
@@ -146,8 +146,8 @@
     {
       "id": 30,
       "folderId": 5,
-      "title": "Pomysł na biznes",
-      "body": "Otworzyć kawiarnię z książkami."
+      "title": "Pomysł na biznesy",
+      "body": "Otworzyć kawiarnię"
     },
     {
       "id": 31,
@@ -224,7 +224,7 @@
     {
       "id": 43,
       "folderId": 5,
-      "title": "Pomysł na książkę kucharską",
+      "title": "Pomysł",
       "body": "Napisać książkę kucharską z przepisami na zdrowe dania."
     },
     {
