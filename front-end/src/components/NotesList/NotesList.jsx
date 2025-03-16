@@ -3,7 +3,13 @@ import { Title } from "../Title/Title";
 import { AddNewButton } from "../AddNewButton/AddNewButton";
 import { TopBar } from "../TopBar/TopBar";
 import { ShortNote } from "../ShortNote/ShortNote";
-import { NavLink, Outlet, useLoaderData } from "react-router-dom";
+import {
+  Form,
+  NavLink,
+  Outlet,
+  useLoaderData,
+  useParams,
+} from "react-router-dom";
 import { nanoid } from "nanoid";
 
 const NotesContainer = ({ children }) => (
@@ -16,9 +22,24 @@ const Notes = ({ children }) => (
   </div>
 );
 
+export const addNoteForm = ({ params }) => {
+  console.log(params.folderId);
+  return fetch("http://localhost:3000/notes", {
+    method: "POST",
+    headers: {
+      "Content-type": "application/json",
+    },
+    body: JSON.stringify({
+      folderId: Number(params.folderId),
+      title: "Nowa notatka",
+      body: "Nowa treść notatki",
+    }),
+  });
+};
+
 export function NotesList() {
   const notes = useLoaderData();
-  // const { folderId } = useParams();
+  const { folderId } = useParams();
 
   return (
     <>
@@ -26,7 +47,9 @@ export function NotesList() {
         <Notes>
           <TopBar>
             <Title>Notatki</Title>
-            <AddNewButton>+</AddNewButton>
+            <Form method="POST" action="">
+              <AddNewButton>+</AddNewButton>
+            </Form>
           </TopBar>
           {notes
             // .filter((note) => note.folderId === Number(folderId))

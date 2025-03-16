@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { App } from "../src/App";
-import { NotesList } from "./components/NotesList/NotesList";
+import { addNoteForm, NotesList } from "./components/NotesList/NotesList";
 import { Note } from "./components/Note/Note";
 import { addFolderForm } from "./components/FoldersList/FoldersList";
 
@@ -18,6 +18,7 @@ const router = createBrowserRouter([
       {
         element: <NotesList />,
         path: "/notes/:folderId",
+        action: addNoteForm,
         loader: ({ params }) => {
           return fetch(
             `http://localhost:3000/notes?folderId=${params.folderId}`
