@@ -23,6 +23,10 @@
     {
       "name": "Projekty",
       "id": 6
+    },
+    {
+      "name": "xcxcxc",
+      "id": 7
     }
   ],
   "archive": {
@@ -80,7 +84,7 @@
     {
       "id": 19,
       "folderId": 5,
-      "title": "Pomysł na książki",
+      "title": "Pomysł na książkę",
       "body": "Napisać książkę o programowaniu w JavaScript."
     },
     {
@@ -146,8 +150,8 @@
     {
       "id": 30,
       "folderId": 5,
-      "title": "Pomysł na biznesy",
-      "body": "Otworzyć kawiarnię"
+      "title": "Pomysł na biznes",
+      "body": "Otworzyć kawiarnię z książkami."
     },
     {
       "id": 31,
@@ -224,7 +228,7 @@
     {
       "id": 43,
       "folderId": 5,
-      "title": "Pomysł",
+      "title": "Pomysł na książkę kucharską",
       "body": "Napisać książkę kucharską z przepisami na zdrowe dania."
     },
     {
@@ -240,16 +244,10 @@
       "body": "Stworzyć aplikację do zarządzania finansami osobistymi."
     },
     {
-      "folderId": 3,
+      "folderId": 7,
       "title": "Nowa notatka",
-      "body": "Nowa treść notatki",
+      "body": "Nowa treść notatk",
       "id": 46
-    },
-    {
-      "folderId": 5,
-      "title": "Nowa notatka",
-      "body": "Nowa treść notatki",
-      "id": 47
     }
   ]
 }

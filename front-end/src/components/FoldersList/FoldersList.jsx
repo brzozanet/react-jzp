@@ -16,8 +16,8 @@ const UserCreatedFolders = ({ children }) => (
   </div>
 );
 
-export const addFolderForm = async (args) => {
-  const formData = await args.request.formData();
+export const addFolderForm = async ({ request }) => {
+  const formData = await request.formData();
   const folderName = formData.get("folder-name");
   return fetch("http://localhost:3000/folders", {
     method: "POST",
