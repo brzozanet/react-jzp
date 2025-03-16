@@ -36,7 +36,7 @@ export function Note() {
             <img className={css.image} src={RemoveIcon} />
           </button>
         </TopBar>
-        <NoteEditor key={nanoid()}>
+        <NoteEditor key={note.id}>
           <Form
             method="PATCH"
             onChange={(event) => {

@@ -23,10 +23,6 @@
     {
       "name": "Projekty",
       "id": 6
-    },
-    {
-      "name": "xcxcxc",
-      "id": 7
     }
   ],
   "archive": {
@@ -242,12 +238,6 @@
       "folderId": 6,
       "title": "Projekt aplikacji do zarządzania finansami",
       "body": "Stworzyć aplikację do zarządzania finansami osobistymi."
-    },
-    {
-      "folderId": 7,
-      "title": "Nowa notatka",
-      "body": "Nowa treść notatk",
-      "id": 46
     }
   ]
 }
