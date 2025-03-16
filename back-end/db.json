@@ -238,6 +238,18 @@
       "folderId": 6,
       "title": "Projekt aplikacji do zarządzania finansami",
       "body": "Stworzyć aplikację do zarządzania finansami osobistymi."
+    },
+    {
+      "folderId": 3,
+      "title": "Nowa notatka",
+      "body": "Nowa treść notatki",
+      "id": 46
+    },
+    {
+      "folderId": 5,
+      "title": "Nowa notatka",
+      "body": "Nowa treść notatki",
+      "id": 47
     }
   ]
 }

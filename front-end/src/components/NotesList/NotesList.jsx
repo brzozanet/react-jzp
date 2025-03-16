@@ -47,7 +47,7 @@ export function NotesList() {
         <Notes>
           <TopBar>
             <Title>Notatki</Title>
-            <Form method="POST" action="">
+            <Form method="POST">
               <AddNewButton>+</AddNewButton>
             </Form>
           </TopBar>

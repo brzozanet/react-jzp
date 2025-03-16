@@ -1,7 +1,7 @@
 import css from "./Note.module.css";
 import RemoveIcon from "../../assets/remove.svg";
 import { TopBar } from "../TopBar/TopBar";
-import { useLoaderData } from "react-router-dom";
+import { Form, useLoaderData } from "react-router-dom";
 import { nanoid } from "nanoid";
 
 const NoteEditor = ({ children }) => (
@@ -20,8 +20,10 @@ export function Note() {
           </button>
         </TopBar>
         <NoteEditor key={nanoid()}>
-          <input type="text" defaultValue={note.title} />
-          <textarea defaultValue={note.body} />
+          <Form>
+            <input type="text" defaultValue={note.title} />
+            <textarea defaultValue={note.body} />
+          </Form>
         </NoteEditor>
       </div>
     </>
