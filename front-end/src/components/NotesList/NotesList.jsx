@@ -9,7 +9,6 @@ import {
   Outlet,
   redirect,
   useLoaderData,
-  useParams,
 } from "react-router-dom";
 import { nanoid } from "nanoid";
 
@@ -43,7 +42,7 @@ export const addNoteForm = ({ params }) => {
 
 export function NotesList() {
   const notes = useLoaderData();
-  const { folderId } = useParams();
+  // const { folderId } = useParams();
 
   return (
     <>
