@@ -36,6 +36,7 @@ const router = createBrowserRouter([
             path: "/notes/:folderId/note/:noteId",
             action: editNoteForm,
             shouldRevalidate: ({ formAction }) => {
+              console.log(formAction);
               if (formAction) {
                 return false;
               }
