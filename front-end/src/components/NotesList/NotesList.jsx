@@ -36,9 +36,9 @@ export const addNoteForm = ({ params }) => {
     }),
   })
     .then((response) => response.json())
-    .then((newNoteData) =>
-      redirect(`/notes/${newNoteData.folderId}/note/${newNoteData.id}`)
-    );
+    .then((newNoteData) => {
+      return redirect(`/notes/${newNoteData.folderId}/note/${newNoteData.id}`);
+    });
 };
 
 export function NotesList() {
