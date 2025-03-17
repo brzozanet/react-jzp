@@ -5,6 +5,7 @@ import { App } from "../src/App";
 import { addNoteForm, NotesList } from "./components/NotesList/NotesList";
 import { deleteNoteForm, editNoteForm, Note } from "./components/Note/Note";
 import { addFolderForm } from "./components/FoldersList/FoldersList";
+import { NotFound } from "./components/NotFound/NotFound";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,7 @@ const router = createBrowserRouter([
     loader: () => {
       return fetch("http://localhost:3000/folders");
     },
+    errorElement: <NotFound />,
     children: [
       {
         element: <NotesList />,
