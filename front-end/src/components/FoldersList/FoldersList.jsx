@@ -4,7 +4,7 @@ import { Title } from "../Title/Title";
 import { TopBar } from "../TopBar/TopBar";
 import { AddNewButton } from "../AddNewButton/AddNewButton";
 import { nanoid } from "nanoid";
-import { Form, NavLink, useLoaderData } from "react-router-dom";
+import { Form, NavLink, redirect, useLoaderData } from "react-router-dom";
 
 const Folders = ({ children }) => (
   <div className={css["folders-column"]}>{children}</div>
@@ -27,7 +27,9 @@ export const addFolderForm = async ({ request }) => {
     body: JSON.stringify({
       name: folderName,
     }),
-  });
+  })
+    .then((response) => response.json())
+    .then((newFolderData) => redirect(`/notes/${newFolderData.id}`));
 };
 
 export function FoldersList() {
