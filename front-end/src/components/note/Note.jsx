@@ -1,7 +1,7 @@
 import css from "./Note.module.css";
 import RemoveIcon from "../../assets/remove.svg";
 import { TopBar } from "../TopBar/TopBar";
-import { Form, useLoaderData, useSubmit } from "react-router-dom";
+import { Form, redirect, useLoaderData, useSubmit } from "react-router-dom";
 
 const NoteEditor = ({ children }) => (
   <div className={css["note-editor"]}>{children}</div>
@@ -23,6 +23,14 @@ export const editNoteForm = async ({ request, params }) => {
   });
 };
 
+export const deleteNoteForm = ({ params }) => {
+  return fetch(`http://localhost:3000/notes/${params.noteId}`, {
+    method: "DELETE",
+  }).then(() => {
+    return redirect(`/notes/${params.folderId}`);
+  });
+};
+
 export function Note() {
   const note = useLoaderData();
   const submit = useSubmit();
@@ -31,9 +39,11 @@ export function Note() {
     <>
       <div className={css.container}>
         <TopBar>
-          <button className={css.button}>
-            <img className={css.image} src={RemoveIcon} />
-          </button>
+          <Form method="DELETE" action="delete">
+            <button className={css.button}>
+              <img className={css.image} src={RemoveIcon} />
+            </button>
+          </Form>
         </TopBar>
         <NoteEditor key={note.id}>
           <Form
