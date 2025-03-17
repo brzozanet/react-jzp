@@ -7,6 +7,7 @@ import {
   Form,
   NavLink,
   Outlet,
+  redirect,
   useLoaderData,
   useParams,
 } from "react-router-dom";
@@ -23,7 +24,6 @@ const Notes = ({ children }) => (
 );
 
 export const addNoteForm = ({ params }) => {
-  console.log(params.folderId);
   return fetch("http://localhost:3000/notes", {
     method: "POST",
     headers: {
@@ -34,7 +34,11 @@ export const addNoteForm = ({ params }) => {
       title: "Nowa notatka",
       body: "Nowa treść notatki",
     }),
-  });
+  })
+    .then((response) => response.json())
+    .then((newNoteData) =>
+      redirect(`/notes/${newNoteData.folderId}/note/${newNoteData.id}`)
+    );
 };
 
 export function NotesList() {
