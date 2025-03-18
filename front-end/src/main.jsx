@@ -5,23 +5,21 @@ import { App } from "../src/App";
 import { addNoteForm, NotesList } from "./components/NotesList/NotesList";
 import { deleteNoteForm, editNoteForm, Note } from "./components/Note/Note";
 import { addFolderForm } from "./components/FoldersList/FoldersList";
-import { NotFound } from "./components/NotFound/NotFound";
 
 const router = createBrowserRouter([
   {
     element: <App />,
     path: "/",
     action: addFolderForm,
+    loader: () => {
+      return fetch("http://localhost:3000/folders");
+    },
     shouldRevalidate: ({ formAction }) => {
       if (formAction === "/") {
         return true;
       }
       return false;
     },
-    loader: () => {
-      return fetch("http://localhost:3000/folders");
-    },
-    errorElement: <NotFound />,
     children: [
       {
         element: <NotesList />,
@@ -37,6 +35,9 @@ const router = createBrowserRouter([
             element: <Note />,
             path: "/notes/:folderId/note/:noteId",
             action: editNoteForm,
+            loader: ({ params }) => {
+              return fetch(`http://localhost:3000/notes/${params.noteId}`);
+            },
             shouldRevalidate: ({ formAction, currentParams }) => {
               if (
                 !formAction ||
@@ -45,9 +46,6 @@ const router = createBrowserRouter([
                 return true;
               }
               return false;
-            },
-            loader: ({ params }) => {
-              return fetch(`http://localhost:3000/notes/${params.noteId}`);
             },
             children: [
               {
