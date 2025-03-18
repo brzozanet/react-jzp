@@ -5,6 +5,8 @@ import { App } from "../src/App";
 import { addNoteForm, NotesList } from "./components/NotesList/NotesList";
 import { deleteNoteForm, editNoteForm, Note } from "./components/Note/Note";
 import { addFolderForm } from "./components/FoldersList/FoldersList";
+import { PageNotFound } from "./components/NotFound/PageNotFound";
+import { NoteNotFound } from "./components/NotFound/NoteNotFound";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +22,7 @@ const router = createBrowserRouter([
       }
       return false;
     },
+    errorElement: <PageNotFound />,
     children: [
       {
         element: <NotesList />,
@@ -35,8 +38,14 @@ const router = createBrowserRouter([
             element: <Note />,
             path: "/notes/:folderId/note/:noteId",
             action: editNoteForm,
-            loader: ({ params }) => {
-              return fetch(`http://localhost:3000/notes/${params.noteId}`);
+            loader: async ({ params }) => {
+              const fetchResult = await fetch(
+                `http://localhost:3000/notes/${params.noteId}`
+              );
+              if (fetchResult.status === 404) {
+                throw new Error();
+              }
+              return fetchResult;
             },
             shouldRevalidate: ({ formAction, currentParams }) => {
               if (
@@ -47,6 +56,7 @@ const router = createBrowserRouter([
               }
               return false;
             },
+            errorElement: <NoteNotFound />,
             children: [
               {
                 path: "/notes/:folderId/note/:noteId/delete",

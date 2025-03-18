@@ -1,12 +1,13 @@
 import css from "./NotFound.module.css";
 import { Link } from "react-router-dom";
 
-export function NotFound() {
+export function NoteNotFound() {
   return (
     <>
       <div className={css["error-page"]}>
-        <h2>Strona nieznaleziona!</h2>
-        <p>Wpisano niepoprawny adres URL!</p>
+        <h1>404</h1>
+        <h2>Ups... nie ma takiej notatki</h2>
+        <p>Niepoprawny adres</p>
         <Link to="..">Wróć</Link>
       </div>
     </>
