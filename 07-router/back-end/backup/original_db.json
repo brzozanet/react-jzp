@@ -1,0 +1,243 @@
+{
+  "folders": [
+    {
+      "name": "Listy",
+      "id": 1
+    },
+    {
+      "name": "Przemyślenia",
+      "id": 2
+    },
+    {
+      "name": "Plany",
+      "id": 3
+    },
+    {
+      "name": "Cytaty",
+      "id": 4
+    },
+    {
+      "name": "Pomysły",
+      "id": 5
+    },
+    {
+      "name": "Projekty",
+      "id": 6
+    }
+  ],
+  "archive": {
+    "folderId": 5
+  },
+  "notes": [
+    {
+      "id": 5,
+      "folderId": 2,
+      "title": "Albert Einstein",
+      "body": "Learn from yesterday, live for today, hope for tomorrow. The important thing is not to stop questioning."
+    },
+    {
+      "id": 7,
+      "title": "Sun Tzu",
+      "folderId": 2,
+      "body": "Osiągnąć sto zwycięstw w stu bitwach nie jest szczytem umiejętności. Szczytem umiejętności jest pokonanie przeciwnika bez walki."
+    },
+    {
+      "title": "Lista zakupów na wakacje",
+      "body": "\nKup ubezpieczenie,\nKup bilety,\nZarezerwuj hotel\n",
+      "folderId": 1,
+      "id": 8
+    },
+    {
+      "title": "Lista zakupów",
+      "body": "\n1. Herbata,\n2. Ziemianki,\n 3. Woda gazowana\n",
+      "folderId": 1,
+      "id": 10
+    },
+    {
+      "title": "Kurs React - TODO",
+      "body": "\n1. Napisać odcinki\n2. Nagrać odcinki",
+      "folderId": 1,
+      "id": 15
+    },
+    {
+      "id": 16,
+      "folderId": 4,
+      "title": "Steve Jobs",
+      "body": "The only way to do great work is to love what you do."
+    },
+    {
+      "id": 17,
+      "folderId": 4,
+      "title": "Mahatma Gandhi",
+      "body": "Be the change that you wish to see in the world."
+    },
+    {
+      "id": 18,
+      "folderId": 5,
+      "title": "Pomysł na aplikację",
+      "body": "Stworzyć aplikację do zarządzania czasem."
+    },
+    {
+      "id": 19,
+      "folderId": 5,
+      "title": "Pomysł na książkę",
+      "body": "Napisać książkę o programowaniu w JavaScript."
+    },
+    {
+      "id": 20,
+      "folderId": 6,
+      "title": "Projekt strony internetowej",
+      "body": "Zaprojektować stronę internetową dla lokalnej firmy."
+    },
+    {
+      "id": 21,
+      "folderId": 6,
+      "title": "Projekt aplikacji mobilnej",
+      "body": "Stworzyć aplikację mobilną do śledzenia nawyków."
+    },
+    {
+      "id": 22,
+      "folderId": 1,
+      "title": "Lista rzeczy do zrobienia",
+      "body": "\n1. Posprzątać pokój,\n2. Zrobić pranie,\n3. Ugotować obiad\n"
+    },
+    {
+      "id": 23,
+      "folderId": 1,
+      "title": "Lista książek do przeczytania",
+      "body": "\n1. 'Wojna i pokój',\n2. 'Zbrodnia i kara',\n3. 'Mistrz i Małgorzata'\n"
+    },
+    {
+      "id": 24,
+      "folderId": 2,
+      "title": "Przemyślenia na temat życia",
+      "body": "Życie jest jak pudełko czekoladek, nigdy nie wiesz, co dostaniesz."
+    },
+    {
+      "id": 25,
+      "folderId": 2,
+      "title": "Przemyślenia na temat pracy",
+      "body": "Praca jest ważna, ale nie najważniejsza."
+    },
+    {
+      "id": 26,
+      "folderId": 3,
+      "title": "Plan na weekend",
+      "body": "\n1. Wycieczka rowerowa,\n2. Grill z przyjaciółmi,\n3. Odpoczynek\n"
+    },
+    {
+      "id": 27,
+      "folderId": 3,
+      "title": "Plan na wakacje",
+      "body": "\n1. Wyjazd nad morze,\n2. Zwiedzanie miasta,\n3. Relaks na plaży\n"
+    },
+    {
+      "id": 28,
+      "folderId": 4,
+      "title": "Cytat z książki",
+      "body": "'Nie ma rzeczy niemożliwych, są tylko trudne do wykonania.'"
+    },
+    {
+      "id": 29,
+      "folderId": 4,
+      "title": "Cytat z filmu",
+      "body": "'Życie jest piękne, trzeba tylko umieć je dostrzec.'"
+    },
+    {
+      "id": 30,
+      "folderId": 5,
+      "title": "Pomysł na biznes",
+      "body": "Otworzyć kawiarnię z książkami."
+    },
+    {
+      "id": 31,
+      "folderId": 5,
+      "title": "Pomysł na projekt",
+      "body": "Stworzyć stronę internetową dla lokalnej społeczności."
+    },
+    {
+      "id": 32,
+      "folderId": 6,
+      "title": "Projekt aplikacji webowej",
+      "body": "Stworzyć aplikację webową do zarządzania projektami."
+    },
+    {
+      "id": 33,
+      "folderId": 6,
+      "title": "Projekt gry komputerowej",
+      "body": "Stworzyć grę komputerową w stylu retro."
+    },
+    {
+      "id": 34,
+      "folderId": 1,
+      "title": "Lista filmów do obejrzenia",
+      "body": "\n1. 'Incepcja',\n2. 'Matrix',\n3. 'Interstellar'\n"
+    },
+    {
+      "id": 35,
+      "folderId": 1,
+      "title": "Lista rzeczy do kupienia",
+      "body": "\n1. Nowy laptop,\n2. Słuchawki,\n3. Książki\n"
+    },
+    {
+      "id": 36,
+      "folderId": 2,
+      "title": "Przemyślenia na temat zdrowia",
+      "body": "Zdrowie jest najważniejsze, trzeba o nie dbać."
+    },
+    {
+      "id": 37,
+      "folderId": 2,
+      "title": "Przemyślenia na temat edukacji",
+      "body": "Edukacja jest kluczem do sukcesu."
+    },
+    {
+      "id": 38,
+      "folderId": 3,
+      "title": "Plan na przyszły tydzień",
+      "body": "\n1. Spotkanie z klientem,\n2. Prezentacja projektu,\n3. Szkolenie\n"
+    },
+    {
+      "id": 39,
+      "folderId": 3,
+      "title": "Plan na przyszły miesiąc",
+      "body": "\n1. Ukończyć projekt,\n2. Rozpocząć nowy projekt,\n3. Szkolenie zespołu\n"
+    },
+    {
+      "id": 40,
+      "folderId": 4,
+      "title": "Cytat z przemówienia",
+      "body": "'Nie pytaj, co twój kraj może zrobić dla ciebie, zapytaj, co ty możesz zrobić dla swojego kraju.'"
+    },
+    {
+      "id": 41,
+      "folderId": 4,
+      "title": "Cytat z wywiadu",
+      "body": "'Sukces to nie klucz do szczęścia. Szczęście to klucz do sukcesu.'"
+    },
+    {
+      "id": 42,
+      "folderId": 5,
+      "title": "Pomysł na aplikację mobilną",
+      "body": "Stworzyć aplikację mobilną do nauki języków obcych."
+    },
+    {
+      "id": 43,
+      "folderId": 5,
+      "title": "Pomysł na książkę kucharską",
+      "body": "Napisać książkę kucharską z przepisami na zdrowe dania."
+    },
+    {
+      "id": 44,
+      "folderId": 6,
+      "title": "Projekt strony e-commerce",
+      "body": "Stworzyć stronę e-commerce do sprzedaży rękodzieła."
+    },
+    {
+      "id": 45,
+      "folderId": 6,
+      "title": "Projekt aplikacji do zarządzania finansami",
+      "body": "Stworzyć aplikację do zarządzania finansami osobistymi."
+    }
+  ]
+}
