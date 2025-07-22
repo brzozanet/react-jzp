@@ -1,10 +1,6 @@
-import { Footer } from "./components/Footer/Footer";
-import { Header } from "./components/Header/Header";
-
 export default function Home() {
   return (
     <>
-      <Header />
       <h1>Hello Next!</h1>
       <h2>Strona główna</h2>
       <p>
@@ -24,7 +20,6 @@ export default function Home() {
         dictum velit enim non erat. Nullam ac urna eu felis dapibus condimentum
         sit amet a augue. Sed non neque elit.
       </p>
-      <Footer />
     </>
   );
 }
