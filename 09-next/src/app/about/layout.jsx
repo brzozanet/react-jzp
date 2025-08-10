@@ -1,4 +1,4 @@
-export default function About({ children }) {
+export default function AboutLayout({ children }) {
   return (
     <>
       <h2>O nas</h2>
