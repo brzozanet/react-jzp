@@ -1,4 +1,4 @@
-export default function About() {
+export default function About({ children }) {
   return (
     <>
       <h2>O nas</h2>
@@ -6,6 +6,7 @@ export default function About() {
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis,
         cumque.
       </p>
+      {children}
     </>
   );
 }
