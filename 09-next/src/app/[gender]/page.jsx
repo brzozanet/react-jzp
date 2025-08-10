@@ -5,7 +5,7 @@ export default async function Gender({ params }) {
   return (
     <>
       <h2>Ścieżka dynamiczna</h2>
-      <h3>{GENDERS_TEXT_MAPPING.get(gender)}</h3>
+      <h3>{GENDERS_TEXT_MAPPING.get(gender) || gender}</h3>
       <p>
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci
         expedita pariatur eveniet voluptates nesciunt corporis, molestias dolor
