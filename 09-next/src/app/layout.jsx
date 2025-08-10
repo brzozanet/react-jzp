@@ -1,4 +1,6 @@
 // import "./globals.css";
+import { Footer } from "./components/Footer/Footer";
+import { Header } from "./components/Header/Header";
 
 export const metadata = {
   title: "Hello Next!",
@@ -9,7 +11,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="pl">
       {/* jako children renderuje się zawartość page.js */}
-      <body>{children}</body>
+      <body>
+        <Header />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }
