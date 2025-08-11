@@ -30,8 +30,8 @@ export default async function Gender({ params }) {
 
 export const generateStaticParams = async () => {
   return [
-    { gender: "Kobieta" },
-    { gender: "Mężczyzna" },
-    { gender: "Dziecko" },
+    { gender: "kobieta" },
+    { gender: "mezczyzna" },
+    { gender: "dziecko" },
   ];
 };
