@@ -1,3 +1,5 @@
+import { LanguageSelector } from "./components/LanguageSelector/LanguageSelector";
+
 export default function Home() {
   return (
     <>
@@ -9,6 +11,7 @@ export default function Home() {
         massa erat at dui. Pellentesque habitant morbi tristique senectus et
         netus et malesuada fames ac turpis egestas.
       </p>
+      <LanguageSelector />
     </>
   );
 }
