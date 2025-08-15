@@ -1,6 +1,13 @@
 // import "./globals.css";
+import { Roboto } from "next/font/google";
 import { Footer } from "./components/Footer/Footer";
 import { Header } from "./components/Header/Header";
+
+const roboto = Roboto({
+  style: ["normal"],
+  subsets: ["latin"],
+  weight: "300",
+});
 
 export const metadata = {
   title: "Hello Next!",
@@ -11,7 +18,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="pl">
       {/* jako children renderuje się zawartość page.js */}
-      <body>
+      <body className={roboto.className}>
         <Header />
         {children}
         <Footer />
